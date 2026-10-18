@@ -1,0 +1,2675 @@
+[
+ {
+  "t0": 0.0,
+  "t1": 2.4,
+  "xfade": 0.0,
+  "seed": 100,
+  "palette": "sepia",
+  "glitch": [
+   0.03,
+   0.07
+  ],
+  "grade": {
+   "key": [
+    226,
+    214,
+    196
+   ],
+   "amount": 0.26,
+   "contrast": 1.03,
+   "lift": 0.004
+  },
+  "cam": {
+   "seed": 20,
+   "handheld": 1.1,
+   "aperture": 1.4,
+   "max_blur": 5,
+   "keys": [
+    [
+     0.0,
+     -0.01,
+     0.004,
+     0.012,
+     -0.18,
+     0.62
+    ],
+    [
+     0.45,
+     0.0,
+     0.0,
+     0.05722500000000001,
+     0.0,
+     0.62
+    ],
+    [
+     1.0,
+     0.012,
+     -0.004,
+     0.097,
+     0.16,
+     0.62
+    ]
+   ]
+  },
+  "tr_in": null,
+  "tr_out": null,
+  "caption": null,
+  "anno": null,
+  "layers": [
+   {
+    "t": "bg",
+    "src": "era01_ionia",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.06
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.55,
+    "count": 60,
+    "alpha": 0.36,
+    "speed": 0.026,
+    "seed": 60
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "古希腊早期哲学",
+     "t0": 0.35,
+     "t1": 2.25,
+     "layout": "center",
+     "px": 132,
+     "justify": true,
+     "band": 0.72,
+     "dy": 0.1,
+     "erase": true,
+     "words": [],
+     "glow": 0.45,
+     "seed": 100
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "note",
+     "text": "前 6 世纪 · 水与火",
+     "t0": 0.5,
+     "t1": 2.3,
+     "layout": "center",
+     "px": 30,
+     "alpha": 0.85,
+     "dy": 0.26,
+     "raw_text": true,
+     "words": [],
+     "glow": 0.0,
+     "seed": 200
+    }
+   }
+  ]
+ },
+ {
+  "t0": 1.8,
+  "t1": 4.2,
+  "xfade": 0.6,
+  "seed": 101,
+  "palette": "sepia",
+  "glitch": [
+   0.03,
+   0.07
+  ],
+  "grade": {
+   "key": [
+    226,
+    214,
+    196
+   ],
+   "amount": 0.26,
+   "contrast": 1.03,
+   "lift": 0.004
+  },
+  "cam": {
+   "seed": 21,
+   "handheld": 1.1,
+   "aperture": 1.4,
+   "max_blur": 5,
+   "keys": [
+    [
+     0.0,
+     -0.008,
+     0.004,
+     0.022,
+     -0.15,
+     0.62
+    ],
+    [
+     0.45,
+     0.0,
+     0.0,
+     0.06772500000000001,
+     0.0,
+     0.62
+    ],
+    [
+     1.0,
+     0.012,
+     -0.004,
+     0.10700000000000001,
+     0.13,
+     0.62
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "zoom_out",
+   "amt": 0.55,
+   "ramp": 0.35
+  },
+  "tr_out": null,
+  "caption": null,
+  "anno": null,
+  "layers": [
+   {
+    "t": "bg",
+    "src": "era02_cave_academy",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.06
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.55,
+    "count": 65,
+    "alpha": 0.36,
+    "speed": 0.026,
+    "seed": 61
+   },
+   {
+    "t": "map",
+    "src": "map_ancient",
+    "z": 0.44,
+    "x": 0.26,
+    "y": 0.62,
+    "w": 0.32,
+    "rot": -7,
+    "rot_speed": 1.8,
+    "alpha": 0.38,
+    "u_in": 0.2,
+    "seed": 3
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "古希腊古典哲学",
+     "t0": 2.15,
+     "t1": 4.05,
+     "layout": "center",
+     "px": 132,
+     "justify": true,
+     "band": 0.72,
+     "dy": 0.1,
+     "erase": true,
+     "words": [],
+     "glow": 0.45,
+     "seed": 101
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "note",
+     "text": "前 4 世纪 · 洞穴与理念",
+     "t0": 2.3,
+     "t1": 4.1000000000000005,
+     "layout": "center",
+     "px": 30,
+     "alpha": 0.85,
+     "dy": 0.26,
+     "raw_text": true,
+     "words": [],
+     "glow": 0.0,
+     "seed": 201
+    }
+   }
+  ]
+ },
+ {
+  "t0": 3.6,
+  "t1": 6.0,
+  "xfade": 0.6,
+  "seed": 102,
+  "palette": "sepia",
+  "glitch": [
+   0.03,
+   0.07
+  ],
+  "grade": {
+   "key": [
+    226,
+    214,
+    196
+   ],
+   "amount": 0.26,
+   "contrast": 1.03,
+   "lift": 0.004
+  },
+  "cam": {
+   "seed": 22,
+   "handheld": 1.1,
+   "aperture": 1.4,
+   "max_blur": 5,
+   "keys": [
+    [
+     0.0,
+     -0.006,
+     0.004,
+     0.032,
+     -0.12,
+     0.62
+    ],
+    [
+     0.45,
+     0.0,
+     0.0,
+     0.07822500000000002,
+     0.0,
+     0.62
+    ],
+    [
+     1.0,
+     0.012,
+     -0.004,
+     0.117,
+     0.1,
+     0.62
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "zoom_out",
+   "amt": 0.55,
+   "ramp": 0.35
+  },
+  "tr_out": null,
+  "caption": null,
+  "anno": null,
+  "layers": [
+   {
+    "t": "bg",
+    "src": "era03_gothic",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.06
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.55,
+    "count": 70,
+    "alpha": 0.36,
+    "speed": 0.026,
+    "seed": 62
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "中古哲学",
+     "t0": 3.95,
+     "t1": 5.85,
+     "layout": "center",
+     "px": 132,
+     "justify": true,
+     "band": 0.72,
+     "dy": 0.1,
+     "erase": true,
+     "words": [],
+     "glow": 0.45,
+     "seed": 102
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "note",
+     "text": "5–15 世纪 · 信仰与理性",
+     "t0": 4.1,
+     "t1": 5.9,
+     "layout": "center",
+     "px": 30,
+     "alpha": 0.85,
+     "dy": 0.26,
+     "raw_text": true,
+     "words": [],
+     "glow": 0.0,
+     "seed": 202
+    }
+   }
+  ]
+ },
+ {
+  "t0": 5.4,
+  "t1": 7.8,
+  "xfade": 0.6,
+  "seed": 103,
+  "palette": "sepia",
+  "glitch": [
+   0.03,
+   0.07
+  ],
+  "grade": {
+   "key": [
+    226,
+    214,
+    196
+   ],
+   "amount": 0.26,
+   "contrast": 1.03,
+   "lift": 0.004
+  },
+  "cam": {
+   "seed": 23,
+   "handheld": 1.1,
+   "aperture": 1.4,
+   "max_blur": 5,
+   "keys": [
+    [
+     0.0,
+     -0.004,
+     0.004,
+     0.041999999999999996,
+     -0.09,
+     0.62
+    ],
+    [
+     0.45,
+     0.0,
+     0.0,
+     0.088725,
+     0.0,
+     0.62
+    ],
+    [
+     1.0,
+     0.012,
+     -0.004,
+     0.127,
+     0.07,
+     0.62
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "zoom_out",
+   "amt": 0.55,
+   "ramp": 0.35
+  },
+  "tr_out": null,
+  "caption": null,
+  "anno": null,
+  "layers": [
+   {
+    "t": "bg",
+    "src": "era04_slate_mirror",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.06
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.55,
+    "count": 75,
+    "alpha": 0.36,
+    "speed": 0.026,
+    "seed": 63
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "经验论与唯理论",
+     "t0": 5.75,
+     "t1": 7.6499999999999995,
+     "layout": "center",
+     "px": 132,
+     "justify": true,
+     "band": 0.72,
+     "dy": 0.1,
+     "erase": true,
+     "words": [],
+     "glow": 0.45,
+     "seed": 103
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "note",
+     "text": "17–18 世纪 · 白板与天赋",
+     "t0": 5.9,
+     "t1": 7.7,
+     "layout": "center",
+     "px": 30,
+     "alpha": 0.85,
+     "dy": 0.26,
+     "raw_text": true,
+     "words": [],
+     "glow": 0.0,
+     "seed": 203
+    }
+   }
+  ]
+ },
+ {
+  "t0": 7.2,
+  "t1": 9.6,
+  "xfade": 0.6,
+  "seed": 104,
+  "palette": "sepia",
+  "glitch": [
+   0.03,
+   0.07
+  ],
+  "grade": {
+   "key": [
+    216,
+    108,
+    82
+   ],
+   "amount": 0.4,
+   "contrast": 1.07,
+   "lift": -0.008
+  },
+  "cam": {
+   "seed": 24,
+   "handheld": 1.1,
+   "aperture": 1.4,
+   "max_blur": 5,
+   "keys": [
+    [
+     0.0,
+     -0.002,
+     0.004,
+     0.052000000000000005,
+     -0.06,
+     0.62
+    ],
+    [
+     0.45,
+     0.0,
+     0.0,
+     0.09922500000000001,
+     0.0,
+     0.62
+    ],
+    [
+     1.0,
+     0.012,
+     -0.004,
+     0.137,
+     0.04000000000000001,
+     0.62
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "zoom_out",
+   "amt": 0.55,
+   "ramp": 0.35
+  },
+  "tr_out": null,
+  "caption": null,
+  "anno": null,
+  "layers": [
+   {
+    "t": "bg",
+    "src": "era05_bastille",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.06
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.55,
+    "count": 80,
+    "alpha": 0.36,
+    "speed": 0.026,
+    "seed": 64
+   },
+   {
+    "t": "prop",
+    "src": "flag_fr",
+    "z": 0.34,
+    "x": 0.76,
+    "y": 0.5,
+    "h": 0.74,
+    "tilt": -8,
+    "alpha": 0.55
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "法国大革命",
+     "t0": 7.55,
+     "t1": 9.45,
+     "layout": "center",
+     "px": 132,
+     "justify": true,
+     "band": 0.72,
+     "dy": 0.1,
+     "erase": true,
+     "words": [],
+     "glow": 0.45,
+     "seed": 104
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "note",
+     "text": "1789 · 自由与平等",
+     "t0": 7.7,
+     "t1": 9.5,
+     "layout": "center",
+     "px": 30,
+     "alpha": 0.85,
+     "dy": 0.26,
+     "raw_text": true,
+     "words": [],
+     "glow": 0.0,
+     "seed": 204
+    }
+   }
+  ]
+ },
+ {
+  "t0": 9.0,
+  "t1": 11.4,
+  "xfade": 0.6,
+  "seed": 105,
+  "palette": "sepia",
+  "glitch": [
+   0.03,
+   0.07
+  ],
+  "grade": {
+   "key": [
+    198,
+    84,
+    66
+   ],
+   "amount": 0.46,
+   "contrast": 1.09,
+   "lift": -0.014
+  },
+  "cam": {
+   "seed": 25,
+   "handheld": 1.1,
+   "aperture": 1.4,
+   "max_blur": 5,
+   "keys": [
+    [
+     0.0,
+     0.0,
+     0.004,
+     0.062,
+     -0.03,
+     0.62
+    ],
+    [
+     0.45,
+     0.0,
+     0.0,
+     0.10972500000000002,
+     0.0,
+     0.62
+    ],
+    [
+     1.0,
+     0.012,
+     -0.004,
+     0.14700000000000002,
+     0.010000000000000009,
+     0.62
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "zoom_out",
+   "amt": 0.55,
+   "ramp": 0.35
+  },
+  "tr_out": null,
+  "caption": null,
+  "anno": null,
+  "layers": [
+   {
+    "t": "bg",
+    "src": "era06_factory_book",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.06
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.55,
+    "count": 85,
+    "alpha": 0.36,
+    "speed": 0.026,
+    "seed": 65
+   },
+   {
+    "t": "prop",
+    "src": "flag_red",
+    "z": 0.4,
+    "x": 0.2,
+    "y": 0.46,
+    "h": 0.58,
+    "tilt": 9,
+    "flip": true,
+    "alpha": 0.4
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "马克思主义",
+     "t0": 9.35,
+     "t1": 11.25,
+     "layout": "center",
+     "px": 132,
+     "justify": true,
+     "band": 0.72,
+     "dy": 0.1,
+     "erase": true,
+     "words": [],
+     "glow": 0.45,
+     "seed": 105
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "note",
+     "text": "1848 · 资本与劳动",
+     "t0": 9.5,
+     "t1": 11.3,
+     "layout": "center",
+     "px": 30,
+     "alpha": 0.85,
+     "dy": 0.26,
+     "raw_text": true,
+     "words": [],
+     "glow": 0.0,
+     "seed": 205
+    }
+   }
+  ]
+ },
+ {
+  "t0": 10.8,
+  "t1": 13.2,
+  "xfade": 0.6,
+  "seed": 106,
+  "palette": "sepia",
+  "glitch": [
+   0.03,
+   0.07
+  ],
+  "grade": {
+   "key": [
+    198,
+    84,
+    66
+   ],
+   "amount": 0.46,
+   "contrast": 1.09,
+   "lift": -0.014
+  },
+  "cam": {
+   "seed": 26,
+   "handheld": 1.1,
+   "aperture": 1.4,
+   "max_blur": 5,
+   "keys": [
+    [
+     0.0,
+     0.002,
+     0.004,
+     0.072,
+     0.0,
+     0.62
+    ],
+    [
+     0.45,
+     0.0,
+     0.0,
+     0.120225,
+     0.0,
+     0.62
+    ],
+    [
+     1.0,
+     0.012,
+     -0.004,
+     0.157,
+     -0.01999999999999999,
+     0.62
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "zoom_out",
+   "amt": 0.55,
+   "ramp": 0.35
+  },
+  "tr_out": null,
+  "caption": null,
+  "anno": null,
+  "layers": [
+   {
+    "t": "bg",
+    "src": "era07_winterpalace",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.06
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.55,
+    "count": 90,
+    "alpha": 0.36,
+    "speed": 0.026,
+    "seed": 66
+   },
+   {
+    "t": "prop",
+    "src": "flag_red",
+    "z": 0.3,
+    "x": 0.84,
+    "y": 0.46,
+    "h": 0.96,
+    "tilt": -4,
+    "alpha": 0.52
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "十月革命",
+     "t0": 11.15,
+     "t1": 13.049999999999999,
+     "layout": "center",
+     "px": 132,
+     "justify": true,
+     "band": 0.72,
+     "dy": 0.1,
+     "erase": true,
+     "words": [],
+     "glow": 0.45,
+     "seed": 106
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "note",
+     "text": "1917 · 实践与革命",
+     "t0": 11.3,
+     "t1": 13.1,
+     "layout": "center",
+     "px": 30,
+     "alpha": 0.85,
+     "dy": 0.26,
+     "raw_text": true,
+     "words": [],
+     "glow": 0.0,
+     "seed": 206
+    }
+   }
+  ]
+ },
+ {
+  "t0": 12.6,
+  "t1": 15.0,
+  "xfade": 0.6,
+  "seed": 107,
+  "palette": "sepia",
+  "glitch": [
+   0.03,
+   0.07
+  ],
+  "grade": {
+   "key": [
+    226,
+    214,
+    196
+   ],
+   "amount": 0.26,
+   "contrast": 1.03,
+   "lift": 0.004
+  },
+  "cam": {
+   "seed": 27,
+   "handheld": 1.1,
+   "aperture": 1.4,
+   "max_blur": 5,
+   "keys": [
+    [
+     0.0,
+     0.004,
+     0.004,
+     0.082,
+     0.03,
+     0.62
+    ],
+    [
+     0.45,
+     0.0,
+     0.0,
+     0.130725,
+     0.0,
+     0.62
+    ],
+    [
+     1.0,
+     0.012,
+     -0.004,
+     0.167,
+     -0.04999999999999999,
+     0.62
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "zoom_out",
+   "amt": 0.55,
+   "ramp": 0.35
+  },
+  "tr_out": null,
+  "caption": null,
+  "anno": null,
+  "layers": [
+   {
+    "t": "bg",
+    "src": "era08_lab",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.06
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.55,
+    "count": 95,
+    "alpha": 0.36,
+    "speed": 0.026,
+    "seed": 67
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "实用主义",
+     "t0": 12.95,
+     "t1": 14.85,
+     "layout": "center",
+     "px": 132,
+     "justify": true,
+     "band": 0.72,
+     "dy": 0.1,
+     "erase": true,
+     "words": [],
+     "glow": 0.45,
+     "seed": 107
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "note",
+     "text": "19 世纪 · 有用即真",
+     "t0": 13.1,
+     "t1": 14.9,
+     "layout": "center",
+     "px": 30,
+     "alpha": 0.85,
+     "dy": 0.26,
+     "raw_text": true,
+     "words": [],
+     "glow": 0.0,
+     "seed": 207
+    }
+   }
+  ]
+ },
+ {
+  "t0": 14.4,
+  "t1": 16.8,
+  "xfade": 0.6,
+  "seed": 108,
+  "palette": "sepia",
+  "glitch": [
+   0.03,
+   0.07
+  ],
+  "grade": {
+   "key": [
+    226,
+    214,
+    196
+   ],
+   "amount": 0.26,
+   "contrast": 1.03,
+   "lift": 0.004
+  },
+  "cam": {
+   "seed": 28,
+   "handheld": 1.1,
+   "aperture": 1.4,
+   "max_blur": 5,
+   "keys": [
+    [
+     0.0,
+     0.006,
+     0.004,
+     0.092,
+     0.06,
+     0.62
+    ],
+    [
+     0.45,
+     0.0,
+     0.0,
+     0.14122500000000002,
+     0.0,
+     0.62
+    ],
+    [
+     1.0,
+     0.012,
+     -0.004,
+     0.177,
+     -0.07999999999999999,
+     0.62
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "zoom_out",
+   "amt": 0.55,
+   "ramp": 0.35
+  },
+  "tr_out": null,
+  "caption": null,
+  "anno": null,
+  "layers": [
+   {
+    "t": "bg",
+    "src": "era09_logic_board",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.06
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.55,
+    "count": 100,
+    "alpha": 0.36,
+    "speed": 0.026,
+    "seed": 68
+   },
+   {
+    "t": "map",
+    "src": "map_ancient",
+    "z": 0.44,
+    "x": 0.26,
+    "y": 0.62,
+    "w": 0.32,
+    "rot": -7,
+    "rot_speed": 1.8,
+    "alpha": 0.38,
+    "u_in": 0.2,
+    "seed": 3
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "分析哲学",
+     "t0": 14.75,
+     "t1": 16.650000000000002,
+     "layout": "center",
+     "px": 132,
+     "justify": true,
+     "band": 0.72,
+     "dy": 0.1,
+     "erase": true,
+     "words": [],
+     "glow": 0.45,
+     "seed": 108
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "note",
+     "text": "20 世纪 · 语言与逻辑",
+     "t0": 14.9,
+     "t1": 16.7,
+     "layout": "center",
+     "px": 30,
+     "alpha": 0.85,
+     "dy": 0.26,
+     "raw_text": true,
+     "words": [],
+     "glow": 0.0,
+     "seed": 208
+    }
+   }
+  ]
+ },
+ {
+  "t0": 16.2,
+  "t1": 18.6,
+  "xfade": 0.6,
+  "seed": 109,
+  "palette": "sepia",
+  "glitch": [
+   0.03,
+   0.07
+  ],
+  "grade": {
+   "key": [
+    226,
+    214,
+    196
+   ],
+   "amount": 0.26,
+   "contrast": 1.03,
+   "lift": 0.004
+  },
+  "cam": {
+   "seed": 29,
+   "handheld": 1.1,
+   "aperture": 1.4,
+   "max_blur": 5,
+   "keys": [
+    [
+     0.0,
+     0.008000000000000002,
+     0.004,
+     0.102,
+     0.09000000000000002,
+     0.62
+    ],
+    [
+     0.45,
+     0.0,
+     0.0,
+     0.151725,
+     0.0,
+     0.62
+    ],
+    [
+     1.0,
+     0.012,
+     -0.004,
+     0.187,
+     -0.11000000000000001,
+     0.62
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "zoom_out",
+   "amt": 0.55,
+   "ramp": 0.35
+  },
+  "tr_out": {
+   "kind": "zoom",
+   "amt": 2.6,
+   "ramp": 0.35
+  },
+  "caption": null,
+  "anno": null,
+  "layers": [
+   {
+    "t": "bg",
+    "src": "era10_machine",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.06
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.55,
+    "count": 105,
+    "alpha": 0.36,
+    "speed": 0.026,
+    "seed": 69
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "人工智能哲学",
+     "t0": 16.55,
+     "t1": 18.450000000000003,
+     "layout": "center",
+     "px": 132,
+     "justify": true,
+     "band": 0.72,
+     "dy": 0.1,
+     "erase": true,
+     "words": [],
+     "glow": 0.45,
+     "seed": 109
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "note",
+     "text": "21 世纪 · 心智与机器",
+     "t0": 16.7,
+     "t1": 18.5,
+     "layout": "center",
+     "px": 30,
+     "alpha": 0.85,
+     "dy": 0.26,
+     "raw_text": true,
+     "words": [],
+     "glow": 0.0,
+     "seed": 209
+    }
+   }
+  ]
+ },
+ {
+  "t0": 18.45,
+  "t1": 23.64,
+  "xfade": 0.0,
+  "seed": 11,
+  "palette": "sepia",
+  "glitch": [
+   0.04,
+   0.12
+  ],
+  "grade": {
+   "key": [
+    255,
+    152,
+    96
+   ],
+   "amount": 0.34,
+   "contrast": 1.07,
+   "lift": -0.012
+  },
+  "cam": {
+   "seed": 3,
+   "handheld": 1.0,
+   "aperture": 2.0,
+   "max_blur": 4,
+   "keys": [
+    [
+     0.0,
+     -0.01,
+     0.0,
+     0.0,
+     0.0,
+     0.55
+    ],
+    [
+     0.5,
+     0.0,
+     0.004,
+     0.026,
+     0.08,
+     0.55
+    ],
+    [
+     1.0,
+     0.006,
+     0.008,
+     0.05,
+     0.16,
+     0.55
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "zoom",
+   "amt": 2.6,
+   "ramp": 0.45
+  },
+  "tr_out": {
+   "kind": "truck",
+   "px": 620,
+   "ramp": 0.42
+  },
+  "caption": {
+   "no": "PLATE 01",
+   "txt": "洞穴 · 火与影",
+   "yr": "前 4 世纪"
+  },
+  "anno": {
+   "t": "理念",
+   "latin": "EIDOS"
+  },
+  "layers": [
+   {
+    "t": "bg",
+    "src": "cave",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.05
+   },
+   {
+    "t": "fx",
+    "mode": "sparks",
+    "z": 0.46,
+    "count": 70,
+    "alpha": 0.9,
+    "rise": 0.5,
+    "seed": 71
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "有人用理念构筑",
+     "t0": 19.22,
+     "t1": 20.68,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 19.22
+      },
+      {
+       "t0": 19.32
+      },
+      {
+       "t0": 19.58
+      },
+      {
+       "t0": 19.8
+      },
+      {
+       "t0": 20.08
+      },
+      {
+       "t0": 20.34
+      },
+      {
+       "t0": 20.58
+      }
+     ],
+     "glow": 0.45,
+     "seed": 1999,
+     "dy": 0.02,
+     "erase": true
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "名为本体的神话",
+     "t0": 20.8,
+     "t1": 23.14,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 20.8
+      },
+      {
+       "t0": 21.3
+      },
+      {
+       "t0": 21.6
+      },
+      {
+       "t0": 21.82
+      },
+      {
+       "t0": 22.1
+      },
+      {
+       "t0": 22.28
+      },
+      {
+       "t0": 22.54
+      }
+     ],
+     "glow": 0.45,
+     "seed": 3847,
+     "dy": 0.02,
+     "erase": true
+    }
+   },
+   {
+    "t": "figure",
+    "src": "fig_plato",
+    "z": 0.26,
+    "x": 0.855,
+    "y": 0.55,
+    "h": 0.74,
+    "front": true,
+    "tin": 19.6,
+    "tout": 23.2,
+    "alpha": 0.92,
+    "seed": 5
+   }
+  ]
+ },
+ {
+  "t0": 23.64,
+  "t1": 27.68,
+  "xfade": 0.0,
+  "seed": 13,
+  "palette": "steel",
+  "glitch": [
+   0.04,
+   0.12
+  ],
+  "grade": {
+   "key": [
+    188,
+    210,
+    238
+   ],
+   "amount": 0.3,
+   "contrast": 1.06,
+   "lift": 0.0
+  },
+  "cam": {
+   "seed": 5,
+   "handheld": 1.0,
+   "aperture": 1.8,
+   "max_blur": 4,
+   "keys": [
+    [
+     0.0,
+     0.014,
+     0.0,
+     0.042,
+     0.14,
+     0.42
+    ],
+    [
+     0.5,
+     0.0,
+     0.004,
+     0.018,
+     0.0,
+     0.42
+    ],
+    [
+     1.0,
+     -0.018,
+     0.008,
+     0.0,
+     -0.14,
+     0.42
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "truck",
+   "px": 620,
+   "ramp": 0.42
+  },
+  "tr_out": {
+   "kind": "zoom_out",
+   "amt": 0.5,
+   "ramp": 0.42
+  },
+  "caption": {
+   "no": "PLATE 02",
+   "txt": "学园 · 柱廊",
+   "yr": "前 387"
+  },
+  "anno": {
+   "t": "逻各斯",
+   "latin": "LOGOS"
+  },
+  "layers": [
+   {
+    "t": "bg",
+    "src": "academy",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "steel",
+    "fit": 1.06
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.56,
+    "count": 110,
+    "alpha": 0.42,
+    "speed": 0.03,
+    "seed": 72
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "逻各斯随波流转",
+     "t0": 22.98,
+     "t1": 24.72,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 22.98
+      },
+      {
+       "t0": 23.34
+      },
+      {
+       "t0": 23.54
+      },
+      {
+       "t0": 23.8
+      },
+      {
+       "t0": 24.08
+      },
+      {
+       "t0": 24.34
+      },
+      {
+       "t0": 24.58
+      }
+     ],
+     "glow": 0.45,
+     "seed": 3544,
+     "dy": 0.1,
+     "erase": true
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "直至阿卡德米亚",
+     "t0": 24.84,
+     "t1": 27.18,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 24.84
+      },
+      {
+       "t0": 25.34
+      },
+      {
+       "t0": 25.6
+      },
+      {
+       "t0": 25.84
+      },
+      {
+       "t0": 26.02
+      },
+      {
+       "t0": 26.24
+      },
+      {
+       "t0": 26.62
+      }
+     ],
+     "glow": 0.45,
+     "seed": 5212,
+     "dy": 0.1,
+     "erase": true
+    }
+   }
+  ]
+ },
+ {
+  "t0": 27.68,
+  "t1": 31.76,
+  "xfade": 0.0,
+  "seed": 17,
+  "palette": "cold",
+  "glitch": [
+   0.04,
+   0.12
+  ],
+  "grade": {
+   "key": [
+    255,
+    150,
+    96
+   ],
+   "amount": 0.26,
+   "contrast": 1.02,
+   "lift": 0.05
+  },
+  "cam": {
+   "seed": 7,
+   "handheld": 0.5,
+   "aperture": 1.4,
+   "max_blur": 3,
+   "keys": [
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.004,
+     0.0,
+     0.34
+    ],
+    [
+     0.5,
+     0.002,
+     0.0,
+     0.008,
+     0.02,
+     0.34
+    ],
+    [
+     1.0,
+     0.004,
+     0.0,
+     0.014,
+     0.06,
+     0.34
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "zoom_out",
+   "amt": 0.5,
+   "ramp": 0.42
+  },
+  "tr_out": {
+   "kind": "rise",
+   "px": 470,
+   "ramp": 0.45
+  },
+  "caption": {
+   "no": "PLATE 03",
+   "txt": "洞喻 · 被缚者",
+   "yr": "前 4 世纪"
+  },
+  "anno": {
+   "t": "囚禁",
+   "latin": "SPELUNCA"
+  },
+  "layers": [
+   {
+    "t": "bg",
+    "src": "cave",
+    "idx": 1,
+    "z": 1.0,
+    "palette": "cold",
+    "fit": 1.1,
+    "alpha": 0.52
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.5,
+    "count": 90,
+    "alpha": 0.3,
+    "speed": 0.016,
+    "seed": 73
+   },
+   {
+    "t": "prop",
+    "src": "bound_figure",
+    "z": 0.34,
+    "x": 0.5,
+    "y": 0.58,
+    "h": 0.64
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "洞穴里有人囚禁",
+     "t0": 26.88,
+     "t1": 28.779999999999998,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 26.88
+      },
+      {
+       "t0": 27.28
+      },
+      {
+       "t0": 27.52
+      },
+      {
+       "t0": 27.86
+      },
+      {
+       "t0": 27.86
+      },
+      {
+       "t0": 28.24
+      },
+      {
+       "t0": 28.56
+      }
+     ],
+     "glow": 0.45,
+     "seed": 1654,
+     "dy": 0.2,
+     "erase": true
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "有人指认出虚华",
+     "t0": 28.9,
+     "t1": 31.26,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 28.9
+      },
+      {
+       "t0": 29.36
+      },
+      {
+       "t0": 29.62
+      },
+      {
+       "t0": 29.86
+      },
+      {
+       "t0": 30.08
+      },
+      {
+       "t0": 30.3
+      },
+      {
+       "t0": 30.56
+      }
+     ],
+     "glow": 0.45,
+     "seed": 4585,
+     "dy": 0.2,
+     "erase": true
+    }
+   }
+  ]
+ },
+ {
+  "t0": 31.76,
+  "t1": 35.94,
+  "xfade": 0.0,
+  "seed": 23,
+  "palette": "sepia",
+  "glitch": [
+   0.04,
+   0.12
+  ],
+  "grade": {
+   "key": [
+    255,
+    152,
+    96
+   ],
+   "amount": 0.34,
+   "contrast": 1.07,
+   "lift": -0.012
+  },
+  "cam": {
+   "seed": 11,
+   "handheld": 0.3,
+   "aperture": 0.0,
+   "max_blur": 0,
+   "keys": [
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.3
+    ],
+    [
+     0.5,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.3
+    ],
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.3
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "rise",
+   "px": 470,
+   "ramp": 0.45
+  },
+  "tr_out": {
+   "kind": "rise",
+   "px": 520,
+   "ramp": 0.45
+  },
+  "caption": {
+   "no": "PLATE 04",
+   "txt": "毒芹之杯",
+   "yr": "前 399"
+  },
+  "anno": {
+   "t": "毒鸩",
+   "latin": "PHARMAKON"
+  },
+  "layers": [
+   {
+    "t": "bg",
+    "src": "hemlock",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.04
+   },
+   {
+    "t": "prop",
+    "src": "hand_cup",
+    "z": 0.3,
+    "x": 0.68,
+    "y": 0.6,
+    "h": 0.72
+   },
+   {
+    "t": "fx",
+    "mode": "smoke",
+    "z": 0.42,
+    "count": 6,
+    "alpha": 0.16,
+    "seed": 74
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "也有人饮下毒鸩",
+     "t0": 31.22,
+     "t1": 32.660000000000004,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 31.22
+      },
+      {
+       "t0": 31.34
+      },
+      {
+       "t0": 31.34
+      },
+      {
+       "t0": 31.76
+      },
+      {
+       "t0": 32.06
+      },
+      {
+       "t0": 32.36
+      },
+      {
+       "t0": 32.6
+      }
+     ],
+     "glow": 0.45,
+     "seed": 9912,
+     "dy": 0.06,
+     "erase": true
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "将死生从容作答",
+     "t0": 32.78,
+     "t1": 35.44,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 32.78
+      },
+      {
+       "t0": 33.06
+      },
+      {
+       "t0": 33.34
+      },
+      {
+       "t0": 33.58
+      },
+      {
+       "t0": 33.9
+      },
+      {
+       "t0": 34.32
+      },
+      {
+       "t0": 34.62
+      }
+     ],
+     "glow": 0.45,
+     "seed": 882,
+     "dy": 0.06,
+     "erase": true
+    }
+   },
+   {
+    "t": "figure",
+    "src": "fig_socrates",
+    "z": 0.25,
+    "x": 0.2,
+    "y": 0.5,
+    "h": 0.66,
+    "front": true,
+    "tin": 32.6,
+    "tout": 35.4,
+    "alpha": 0.9,
+    "seed": 7
+   }
+  ]
+ },
+ {
+  "t0": 35.94,
+  "t1": 39.76,
+  "xfade": 0.0,
+  "seed": 29,
+  "palette": "gold",
+  "glitch": [
+   0.04,
+   0.12
+  ],
+  "grade": {
+   "key": [
+    238,
+    196,
+    128
+   ],
+   "amount": 0.3,
+   "contrast": 1.04,
+   "lift": 0.008
+  },
+  "cam": {
+   "seed": 13,
+   "handheld": 0.9,
+   "aperture": 1.6,
+   "max_blur": 4,
+   "keys": [
+    [
+     0.0,
+     0.0,
+     0.026,
+     0.018,
+     0.0,
+     0.55
+    ],
+    [
+     0.5,
+     0.004,
+     0.0,
+     0.032,
+     0.06,
+     0.55
+    ],
+    [
+     1.0,
+     0.008,
+     -0.028,
+     0.048,
+     0.12,
+     0.55
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "rise",
+   "px": 520,
+   "ramp": 0.45
+  },
+  "tr_out": {
+   "kind": "truck",
+   "px": 640,
+   "ramp": 0.42
+  },
+  "caption": {
+   "no": "PLATE 05",
+   "txt": "上帝之城",
+   "yr": "426"
+  },
+  "anno": {
+   "t": "天城",
+   "latin": "CIVITAS DEI"
+  },
+  "layers": [
+   {
+    "t": "bg",
+    "src": "celestial",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "gold",
+    "fit": 1.05
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.54,
+    "count": 130,
+    "alpha": 0.4,
+    "speed": 0.028,
+    "seed": 75
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "line",
+     "text": "神谕中有座天城",
+     "t0": 35.28,
+     "t1": 36.84,
+     "layout": "up_center",
+     "px": 116,
+     "words": [
+      {
+       "t0": 35.28
+      },
+      {
+       "t0": 35.42
+      },
+      {
+       "t0": 35.64
+      },
+      {
+       "t0": 35.9
+      },
+      {
+       "t0": 36.18
+      },
+      {
+       "t0": 36.4
+      },
+      {
+       "t0": 36.62
+      }
+     ],
+     "glow": 0.45,
+     "seed": 5941,
+     "vertical": true,
+     "dy": -0.04,
+     "erase": true
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "托名唤作耶和华",
+     "t0": 36.96,
+     "t1": 39.26,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 36.96
+      },
+      {
+       "t0": 37.38
+      },
+      {
+       "t0": 37.6
+      },
+      {
+       "t0": 37.82
+      },
+      {
+       "t0": 38.12
+      },
+      {
+       "t0": 38.38
+      },
+      {
+       "t0": 38.66
+      }
+     ],
+     "glow": 0.45,
+     "seed": 9661,
+     "dy": 0.2,
+     "erase": true
+    }
+   }
+  ]
+ },
+ {
+  "t0": 39.76,
+  "t1": 43.8,
+  "xfade": 0.0,
+  "seed": 31,
+  "palette": "gold",
+  "glitch": [
+   0.04,
+   0.12
+  ],
+  "grade": {
+   "key": [
+    238,
+    196,
+    128
+   ],
+   "amount": 0.3,
+   "contrast": 1.04,
+   "lift": 0.008
+  },
+  "cam": {
+   "seed": 15,
+   "handheld": 1.0,
+   "aperture": 2.6,
+   "max_blur": 6,
+   "keys": [
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.34
+    ],
+    [
+     0.55,
+     0.004,
+     -0.004,
+     0.036,
+     0.08,
+     0.34
+    ],
+    [
+     1.0,
+     0.01,
+     -0.008,
+     0.066,
+     0.16,
+     0.72
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "truck",
+   "px": 640,
+   "ramp": 0.42
+  },
+  "tr_out": {
+   "kind": "zoom",
+   "amt": 2.4,
+   "ramp": 0.4
+  },
+  "caption": {
+   "no": "PLATE 06",
+   "txt": "抄经院",
+   "yr": "13 世纪"
+  },
+  "anno": {
+   "t": "信理",
+   "latin": "DOGMA"
+  },
+  "layers": [
+   {
+    "t": "bg",
+    "src": "scriptorium",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "gold",
+    "fit": 1.05
+   },
+   {
+    "t": "fx",
+    "mode": "paper",
+    "z": 0.46,
+    "count": 7,
+    "alpha": 0.55,
+    "seed": 76
+   },
+   {
+    "t": "prop",
+    "src": "scholar_desk",
+    "z": 0.34,
+    "x": 0.44,
+    "y": 0.52,
+    "h": 0.86
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "有位手持信理的",
+     "t0": 38.96,
+     "t1": 40.74,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 38.96
+      },
+      {
+       "t0": 39.38
+      },
+      {
+       "t0": 39.58
+      },
+      {
+       "t0": 39.86
+      },
+      {
+       "t0": 39.96
+      },
+      {
+       "t0": 40.34
+      },
+      {
+       "t0": 40.62
+      }
+     ],
+     "glow": 0.45,
+     "seed": 594,
+     "dy": 0.18,
+     "erase": true
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "托马斯意气风发",
+     "t0": 40.86,
+     "t1": 43.3,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 40.86
+      },
+      {
+       "t0": 41.08
+      },
+      {
+       "t0": 41.32
+      },
+      {
+       "t0": 41.6
+      },
+      {
+       "t0": 41.86
+      },
+      {
+       "t0": 42.18
+      },
+      {
+       "t0": 42.58
+      }
+     ],
+     "glow": 0.45,
+     "seed": 8093,
+     "dy": -0.14,
+     "erase": true
+    }
+   },
+   {
+    "t": "figure",
+    "src": "fig_aquinas",
+    "z": 0.24,
+    "x": 0.83,
+    "y": 0.5,
+    "h": 0.7,
+    "front": true,
+    "tin": 40.2,
+    "tout": 43.4,
+    "alpha": 0.9,
+    "seed": 9
+   }
+  ]
+ },
+ {
+  "t0": 43.8,
+  "t1": 47.64,
+  "xfade": 0.0,
+  "seed": 37,
+  "palette": "gold",
+  "glitch": [
+   0.04,
+   0.12
+  ],
+  "grade": {
+   "key": [
+    238,
+    196,
+    128
+   ],
+   "amount": 0.3,
+   "contrast": 1.04,
+   "lift": 0.008
+  },
+  "cam": {
+   "seed": 17,
+   "handheld": 0.7,
+   "aperture": 0.0,
+   "max_blur": 0,
+   "keys": [
+    [
+     0.0,
+     -0.03,
+     0.0,
+     0.006,
+     -0.1,
+     0.55
+    ],
+    [
+     0.5,
+     0.0,
+     0.0,
+     0.01,
+     0.0,
+     0.55
+    ],
+    [
+     1.0,
+     0.03,
+     0.0,
+     0.014,
+     0.1,
+     0.55
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "zoom",
+   "amt": 2.4,
+   "ramp": 0.4
+  },
+  "tr_out": {
+   "kind": "zoom",
+   "amt": 3.0,
+   "ramp": 0.42
+  },
+  "caption": {
+   "no": "PLATE 07",
+   "txt": "共相之争",
+   "yr": "12 世纪"
+  },
+  "anno": {
+   "t": "唯名",
+   "latin": "NOMEN"
+  },
+  "layers": [
+   {
+    "t": "bg",
+    "src": "disputation",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "gold",
+    "fit": 1.05
+   },
+   {
+    "t": "fx",
+    "mode": "shaft",
+    "z": 0.6,
+    "angle": -18,
+    "center": 0.4,
+    "amt": 0.3,
+    "drift": 0.1,
+    "u_in": 0.0
+   },
+   {
+    "t": "figure",
+    "src": "fig_plato",
+    "z": 0.3,
+    "x": 0.22,
+    "y": 0.5,
+    "h": 0.44,
+    "tin": 44.0,
+    "tout": 47.2,
+    "alpha": 0.8,
+    "seed": 11
+   },
+   {
+    "t": "figure",
+    "src": "fig_kant",
+    "z": 0.4,
+    "x": 0.78,
+    "y": 0.48,
+    "h": 0.4,
+    "tin": 44.3,
+    "tout": 47.2,
+    "alpha": 0.72,
+    "seed": 12
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "collide",
+     "text": "唯名与唯实交锋",
+     "t0": 43.0,
+     "t1": 44.760000000000005,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 43.0
+      },
+      {
+       "t0": 43.34
+      },
+      {
+       "t0": 43.52
+      },
+      {
+       "t0": 43.8
+      },
+      {
+       "t0": 44.06
+      },
+      {
+       "t0": 44.3
+      },
+      {
+       "t0": 44.58
+      }
+     ],
+     "glow": 0.45,
+     "seed": 8356,
+     "dy": 0.08,
+     "erase": true
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "shuffle",
+     "text": "将思辨翻覆揉轧",
+     "t0": 44.88,
+     "t1": 47.14,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 44.88
+      },
+      {
+       "t0": 45.26
+      },
+      {
+       "t0": 45.56
+      },
+      {
+       "t0": 45.78
+      },
+      {
+       "t0": 46.04
+      },
+      {
+       "t0": 46.26
+      },
+      {
+       "t0": 46.58
+      }
+     ],
+     "glow": 0.45,
+     "seed": 1917,
+     "dy": 0.08,
+     "erase": true
+    }
+   }
+  ]
+ },
+ {
+  "t0": 47.64,
+  "t1": 52.62,
+  "xfade": 0.0,
+  "seed": 41,
+  "palette": "gold",
+  "glitch": [
+   0.04,
+   0.12
+  ],
+  "grade": {
+   "key": [
+    238,
+    196,
+    128
+   ],
+   "amount": 0.3,
+   "contrast": 1.04,
+   "lift": 0.008
+  },
+  "cam": {
+   "seed": 19,
+   "handheld": 0.8,
+   "aperture": 1.8,
+   "max_blur": 4,
+   "keys": [
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.018,
+     0.0,
+     0.55
+    ],
+    [
+     0.5,
+     0.004,
+     0.004,
+     0.032,
+     0.06,
+     0.55
+    ],
+    [
+     1.0,
+     0.008,
+     0.006,
+     0.05,
+     0.1,
+     0.55
+    ]
+   ]
+  },
+  "tr_in": {
+   "kind": "zoom",
+   "amt": 3.0,
+   "ramp": 0.42
+  },
+  "tr_out": null,
+  "caption": {
+   "no": "PLATE 08",
+   "txt": "玫瑰窗",
+   "yr": "13 世纪"
+  },
+  "anno": {
+   "t": "信仰",
+   "latin": "FIDES"
+  },
+  "layers": [
+   {
+    "t": "bg",
+    "src": "rose",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "gold",
+    "fit": 1.04
+   },
+   {
+    "t": "fx",
+    "mode": "dust",
+    "z": 0.52,
+    "count": 120,
+    "alpha": 0.4,
+    "speed": 0.024,
+    "seed": 77
+   },
+   {
+    "t": "texture",
+    "mode": "scanline",
+    "z": 0.28,
+    "front": true,
+    "alpha": 0.55,
+    "speed": 0.8,
+    "width": 0.0016,
+    "u_in": 0.0
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "line",
+     "text": "辩驳里有谁将信仰",
+     "t0": 46.84,
+     "t1": 48.88,
+     "layout": "right_v",
+     "px": 116,
+     "words": [
+      {
+       "t0": 46.84
+      },
+      {
+       "t0": 47.28
+      },
+      {
+       "t0": 47.54
+      },
+      {
+       "t0": 47.84
+      },
+      {
+       "t0": 48.02
+      },
+      {
+       "t0": 48.28
+      },
+      {
+       "t0": 48.5
+      },
+      {
+       "t0": 48.76
+      }
+     ],
+     "glow": 0.45,
+     "seed": 3898,
+     "vertical": true,
+     "erase": true
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "band",
+     "text": "用理性来传达",
+     "t0": 49.0,
+     "t1": 52.12,
+     "layout": "center",
+     "px": null,
+     "words": [
+      {
+       "t0": 49.0
+      },
+      {
+       "t0": 49.26
+      },
+      {
+       "t0": 49.48
+      },
+      {
+       "t0": 49.72
+      },
+      {
+       "t0": 50.12
+      },
+      {
+       "t0": 50.6
+      }
+     ],
+     "glow": 0.45,
+     "seed": 8342,
+     "dy": 0.18,
+     "erase": true
+    }
+   }
+  ]
+ }
+]

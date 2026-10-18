@@ -1,0 +1,8 @@
+{
+  "outDir": "assets/maps",
+  "style": "A single antique map sheet photographed flat: heavy aged paper, foxing, torn edges, hand-inked coastlines, faded red route markings, dense place names too small to read. Muted sepia and faded indigo. NO modern text, NO watermark. The whole sheet fills the frame edge to edge.",
+  "items": [
+    { "name": "map_ancient", "prompt": "A Ptolemaic world map drawn on parchment, circular known world, sea monsters at the edges, latitude lines in faded red." },
+    { "name": "map_voyage", "prompt": "An eighteenth-century nautical chart of the Atlantic, rhumb lines radiating from compass roses, faint red annotations along the routes." }
+  ]
+}

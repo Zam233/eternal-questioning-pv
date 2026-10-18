@@ -1,0 +1,42 @@
+  0.0- 18.9 | cold     | bg=cave       props=column_a               | 追问
+ 18.9- 22.7 | sepia    | bg=cave       props=column_a,bust_b        | 有人用理念构筑 / 名为本体的神话
+ 22.7- 26.6 | sepia    | bg=academy    props=stele,brazier          | 逻各斯随波流转 / 直至阿卡德米亚
+ 26.6- 30.9 | sepia    | bg=cave       props=bust_b,column_a        | 洞穴里有人囚禁 / 有人指认出虚华
+ 30.9- 35.0 | sepia    | bg=hemlock    props=brazier,stele          | 也有人饮下毒鸩 / 将死生从容作答
+ 35.0- 38.7 | gold     | bg=celestial  props=book,frame             | 神谕中有座天城 / 托名唤作耶和华
+ 38.7- 42.7 | gold     | bg=scriptorium props=column_b,arch          | 有位手持信理的 / 托马斯意气风发
+ 42.7- 46.5 | gold     | bg=disputation props=frame,book             | 唯名与唯实交锋 / 将思辨翻覆揉轧
+ 46.5- 51.5 | gold     | bg=rose       props=arch,column_b          | 辩驳里有谁将信仰 / 用理性来传达
+ 51.5- 56.6 | steel    | bg=idol       props=frame,column_b         | 神座在蒙昧后 / 渐渐崩塌
+ 56.6- 60.5 | steel    | bg=clockwork  props=book,gear              | 怀疑将虚妄的幻象 / 拆下
+ 60.5- 64.5 | steel    | bg=clockwork  props=column_b,frame         | 机械的眼把万物 / 剖析再刻画
+ 64.5- 72.8 | steel    | bg=stars      props=gear,book              | 勾勒出泛神实体 / 惹世人皆惊诧
+ 72.8- 76.3 | ivory    | bg=slate      props=drapery,gear           | 于是有人用白板 / 记录属于知的萌芽
+ 76.3- 80.2 | ivory    | bg=doubt      props=frame,book             | 有人把怀疑探遍 / 只为勘破因果的虚假
+ 80.2- 84.2 | ivory    | bg=dawn       props=gear,drapery           | 批判在沉睡后绝醒 / 立定先验伴时空刻划
+ 84.2- 92.7 | ivory    | bg=pyramid    props=book,frame             | 在普遍理性中通向 / 那名为"绝对精神"的终点啊
+ 92.7-108.5 | ash      | bg=stars      props=drapery                | 
+108.5-111.7 | rust     | bg=pyramid    props=gear,book              | 绝对唯心的体系 / 耸立在金字塔
+111.7-115.4 | rust     | bg=forge      props=stele,chain            | 暗藏着自我异化 / 扬弃重构的代码
+115.4-119.3 | rust     | bg=forge      props=book,gear              | 批判宗教的先驱 / 将迷雾荡涤振刷
+119.3-123.0 | rust     | bg=forge      props=chain,stele            | 写下实践的新章 / 待批判者再出发
+123.0-126.9 | cold     | bg=abyss      props=arch,gear              | 是谁说盲目意志 / 皆系于欲望惩罚
+126.9-130.8 | cold     | bg=idol       props=chain,frame            | 又是谁宣布上帝已死 / 高歌超人的神话
+130.8-134.8 | cold     | bg=industry   props=gear,arch              | 工业与商品拜物 / 将一切分割物化
+134.8-139.9 | cold     | bg=forest     props=frame,chain            | 此在世界随生存的时间 / 切分后升华
+139.9-144.4 | ash      | bg=stars      props=drapery                | 
+144.4-159.9 | ash      | bg=ladder     props=ladder,drapery         | 逻辑厘清着世界的图画 / 也守望沉默无言的断崖
+159.9-175.5 | ash      | bg=forest     props=arch,ladder            | 直面事物本身 在现象里发芽 / "凡不可说的 当保持沉默"
+175.5-180.2 | rust     | bg=panopticon props=book,frame             | 有人说那微观权力 / 潜藏在规训的种种技法
+180.2-184.2 | rust     | bg=industry   props=chain,gear             | 也有人批判技术理性 / 异化下的单向度化
+184.2-188.1 | rust     | bg=idol       props=frame,book             | 形而上崇高的大厦 / 随逻辑颠覆重构再崩塌
+188.1-196.5 | rust     | bg=sisyphus   props=gear,chain             | 惟有直面荒谬决意自决的你我 / 从不被虚无压垮
+196.5-200.1 | gold     | bg=dawn       props=frame,arch             | 哲学从不是什么 / 远离于尘世悬空的童话
+200.1-203.9 | gold     | bg=dawn       props=drapery,book           | 无论何时总有人 / 燃尽自我追索几缕光华
+203.9-207.9 | gold     | bg=stars      props=arch,frame             | 思想的微芒指引着 / 永恒追问本质的步伐
+207.9-217.8 | gold     | bg=stars      props=book,drapery           | 化作公理守护着 / 反思着生命无数平凡的人啊
+217.8-224.0 | gold     | bg=abyss      props=frame,arch             | 那是直面未知 / 向死而生
+224.0-229.1 | gold     | bg=dawn       props=drapery,book           | 自由自觉的坚韧灵魂啊
+229.1-240.6 | ivory    | bg=dawn       props=arch                   | 你看啊 / 真理之光终会抵达
+240.6-244.9 | ivory    | bg=dawn       props=drapery                | 请务必再追问一下
+244.9-263.4 | ivory    | bg=dawn       props=drapery                | 

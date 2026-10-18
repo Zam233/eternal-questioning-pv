@@ -1,0 +1,30 @@
+# 渲染产物、临时帧、素材缓存不入库（体积大且可再生）
+out/
+_ref/
+_tmp/
+suno/
+_build/stills*/
+_build/__pycache__/
+_build/pv/__pycache__/
+__pycache__/
+*.pyc
+
+# 音频与参考片（原始素材，另行备份）
+*.mp3
+*.mp4
+*.mov
+
+# 图像素材：用 _build/gen.mjs / fetch_met.mjs / 各 spec_*.json 可重新生成
+_build/assets/
+_build/thumb*.png
+_build/dbg_*.png
+_build/_probe*.png
+_build/_apitest.png
+_build/thumbs_ai.png
+
+# 工作草稿
+_build/_patch*.py
+_build/_sec4.md
+_build/ta_table.txt
+_build/words_dump.txt
+_build/api_watch.log

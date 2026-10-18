@@ -1,0 +1,43 @@
+{
+  "outDir": "assets/props",
+  "transparent": true,
+  "style": "Cut-out film prop photographed on a set, isolated on a fully transparent background, no ground plane, no cast shadow on the ground, no backdrop, no text. Photorealistic, fine material grain, sharp silhouette edges, soft ambient occlusion inside the object's own crevices. The lighting must match the note below exactly — the prop will be composited into that specific shot.",
+  "items": [
+    {
+      "name": "steps",
+      "prompt": "Three weathered stone steps, seen from slightly above, worn edges. LIGHTING: warm firelight coming from below and in front, deep shadow swallowing the top step."
+    },
+    {
+      "name": "amphora",
+      "prompt": "A cracked Greek terracotta amphora, one handle missing, black-figure band worn away. LIGHTING: strong warm firelight from the lower right, the entire left side falling into deep shadow."
+    },
+    {
+      "name": "torso",
+      "prompt": "A fragmentary white marble male torso, arms broken at the shoulder, surface pitted. LIGHTING: cold daylight backlight from the upper left, so the body reads almost as a black silhouette with a thin bright rim."
+    },
+    {
+      "name": "shackles",
+      "prompt": "Heavy rusted iron shackles, open, with a short length of chain, hanging as if on a wall. LIGHTING: a single hard torchlight from the right, everything left of the object in near-total darkness."
+    },
+    {
+      "name": "cave_shadow",
+      "prompt": "The dark shadow of a seated chained human figure, as cast on rough cave rock, soft blurry edges, no detail inside the silhouette, pure darkness. LIGHTING: this is a shadow, not an object — no highlights, no rim light, just a soft dark shape."
+    },
+    {
+      "name": "cup_hemlock",
+      "prompt": "A shallow bronze bowl-cup of dark liquid, on a stone ledge, the surface of the liquid catching one small specular highlight. LIGHTING: single hard key light from upper right, the rest of the frame falling away into darkness."
+    },
+    {
+      "name": "censer",
+      "prompt": "A hanging brass censer on three chains, pierced lid, traces of smoke. LIGHTING: lit from directly above, warm golden, the chains disappearing upward into darkness."
+    },
+    {
+      "name": "illum_page",
+      "prompt": "A single illuminated manuscript page, gold leaf and red initials, curled at one corner, floating free. LIGHTING: raking golden window light from the left at a low angle, warming the paper."
+    },
+    {
+      "name": "quill",
+      "prompt": "A quill pen with a cut nib standing in a small ink pot, feather barbs catching light. LIGHTING: cold white sidelight from the upper left, thin bright edge along the feather."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "outDir": "assets/raw",
+  "style": "19th-century steel engraving / lithograph illustration, sepia and charcoal monochrome, aged foxed paper, dense cross-hatching, high contrast chiaroscuro, museum plate from an old philosophy book, NO TEXT, NO LETTERS, NO WATERMARK",
+  "items": [
+    {
+      "name": "00_probe_plato",
+      "prompt": "Plato standing in a marble colonnade at dawn, pointing upward, classical Greek marble sculpture fused with an engraved plate, dust and light shafts."
+    }
+  ]
+}

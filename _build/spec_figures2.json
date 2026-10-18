@@ -1,0 +1,22 @@
+{
+  "outDir": "assets/subjects",
+  "transparent": true,
+  "style": "Cut-out layer for compositing into a monochrome film shot: the subject is isolated on a fully transparent background, no backdrop, no frame, no cast shadow on any ground, no text, no border. Rendering must read as a 19th-century steel engraving / aquatint: dense cross-hatching, paper grain, soft burr, sharp torn silhouette edge (not a clean vector cut). Extreme chiaroscuro: one hard key light per item, the far side of the face falling to near black so it can sit over a dark plate. No colour.",
+  "items": [
+    { "name": "fig_foucault", "prompt": "Head and shoulders of a 1970s French philosopher: shaved head, thin round wire spectacles catching the light, plain black turtleneck, calm ironic gaze slightly off camera. LIGHTING: hard key from the left, right side of the skull going to black." },
+    { "name": "eye_surveil", "prompt": "A single enormous human eye seen head-on, the iris cut like an engraving with radiating hatch, lashes rendered as fine burin strokes, the whites slightly grey. It reads as an emblem carved in stone, not a photograph. LIGHTING: flat frontal light, a hard rim on the upper lid." },
+    { "name": "fig_hegel", "prompt": "Head and shoulders of a heavy-jowled German philosopher of the 1820s: receding hair combed forward, high stock collar, tight mouth, looking down his nose. LIGHTING: hard key from upper right." },
+    { "name": "fig_marx", "prompt": "Head and shoulders of a 1860s bearded revolutionary thinker: enormous full beard and moustache swallowing the jaw, high forehead, dark wool coat, weary direct stare. LIGHTING: hard key from the left, beard falling to black." },
+    { "name": "fig_schopenhauer", "prompt": "Head and shoulders of a 1850s pessimistic German philosopher: wild white hair flying out at the sides, heavy scowl, high shirt collar and cravat, looking sideways with contempt. LIGHTING: hard key from the upper left." },
+    { "name": "fig_nietzsche", "prompt": "Head and shoulders of an 1880s German philosopher: an enormous drooping moustache, high bald forehead, deep-set burning eyes, dark jacket. LIGHTING: hard key from the upper right, the far cheek to black." },
+    { "name": "fig_heidegger", "prompt": "Head and shoulders of a 1920s German philosopher: short cropped hair, small square moustache, severe brow, dark suit and tie, staring straight ahead. LIGHTING: hard key from the left." },
+    { "name": "fig_husserl", "prompt": "Head and shoulders of a 1910s Austrian-German philosopher: full grey beard, round spectacles, high collar, patient attentive expression. LIGHTING: hard key from the upper left." },
+    { "name": "fig_wittgenstein", "prompt": "Head and shoulders of a 1930s Austrian philosopher: gaunt hollow cheeks, short bristly hair, intense accusing stare straight at the viewer, open-necked shirt. LIGHTING: hard key from the right, half the face in black." },
+    { "name": "fig_camus", "prompt": "Head and shoulders of a 1950s French-Algerian writer: cigarette at the lip, short hair, trench coat collar up, ironic half-smile, rain light. LIGHTING: hard key from the left." },
+    { "name": "fig_locke", "prompt": "Head and shoulders of a 1690s English philosopher: long natural curls, plain linen collar, mild reasonable face. LIGHTING: hard key from the upper left." },
+    { "name": "fig_hume", "prompt": "Head and shoulders of a 1750s Scottish philosopher: plump round face, white wig with side rolls, lace cravat, faintly amused look. LIGHTING: hard key from the upper right." },
+    { "name": "fig_spinoza", "prompt": "Head and shoulders of a 1670s Dutch-Jewish philosopher: long dark shoulder-length hair, plain collar, quiet steady gaze, no wig. LIGHTING: hard key from the left, the dark hair merging into black." },
+    { "name": "fig_descartes", "prompt": "Head and shoulders of a 1630s French philosopher: long dark hair, pointed goatee, wide flat collar, calm analytical look. LIGHTING: hard key from the left." },
+    { "name": "fig_marcuse", "prompt": "Head and shoulders of a 1960s German-American social theorist: thick white hair swept back, strong nose, faint smile, dark jacket. LIGHTING: hard key from the upper right." }
+  ]
+}

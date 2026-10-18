@@ -1,0 +1,390 @@
+[
+ {
+  "t0": 18.55,
+  "t1": 23.4,
+  "seed": 11,
+  "palette": "sepia",
+  "glitch": [
+   0.03,
+   0.1
+  ],
+  "caption": {
+   "no": "PLATE 01",
+   "txt": "洞穴 · 火与影",
+   "yr": "前 4 世纪"
+  },
+  "anno": {
+   "t": "理念",
+   "latin": "EIDOS"
+  },
+  "anno_pos": "br",
+  "cam": {
+   "seed": 3,
+   "handheld": 1.0,
+   "keys": [
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     0.018,
+     0.008,
+     0.07,
+     0.35
+    ]
+   ]
+  },
+  "layers": [
+   {
+    "t": "bg",
+    "src": "cave",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.06
+   },
+   {
+    "t": "prop",
+    "src": "brazier",
+    "z": 0.62,
+    "x": 0.235,
+    "y": 0.735,
+    "h": 0.34
+   },
+   {
+    "t": "prop",
+    "src": "column_a",
+    "z": 0.24,
+    "x": 0.905,
+    "y": 0.6,
+    "h": 0.98,
+    "depth_blur": 0.8
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "line",
+     "text": "有人用理念构筑",
+     "t0": 18.88,
+     "t1": 20.82,
+     "layout": "low_left",
+     "px": 190,
+     "words": [],
+     "glow": 0.55,
+     "seed": 8058
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "line",
+     "text": "名为本体的神话",
+     "t0": 20.82,
+     "t1": 22.86,
+     "layout": "up_right",
+     "px": 175,
+     "words": [],
+     "glow": 0.55,
+     "seed": 5862
+    }
+   }
+  ]
+ },
+ {
+  "t0": 23.4,
+  "t1": 27.4,
+  "seed": 17,
+  "palette": "gold",
+  "glitch": [
+   0.04,
+   0.14
+  ],
+  "caption": {
+   "no": "PLATE 02",
+   "txt": "学园 · 柱廊",
+   "yr": "前 387"
+  },
+  "anno": {
+   "t": "逻各斯",
+   "latin": "LOGOS"
+  },
+  "anno_pos": "bl",
+  "cam": {
+   "seed": 5,
+   "handheld": 1.1,
+   "keys": [
+    [
+     0.0,
+     -0.012,
+     0.0,
+     0.055,
+     -0.25
+    ],
+    [
+     1.0,
+     0.022,
+     0.004,
+     0.0,
+     0.2
+    ]
+   ]
+  },
+  "layers": [
+   {
+    "t": "bg",
+    "src": "academy",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "gold",
+    "fit": 1.05
+   },
+   {
+    "t": "prop",
+    "src": "bust_b",
+    "z": 0.58,
+    "x": 0.215,
+    "y": 0.615,
+    "h": 0.5
+   },
+   {
+    "t": "prop",
+    "src": "column_b",
+    "z": 0.26,
+    "x": 0.835,
+    "y": 0.66,
+    "h": 0.88,
+    "depth_blur": 0.6
+   },
+   {
+    "t": "type",
+    "z": 0.31,
+    "cue": {
+     "kind": "wave",
+     "text": "逻各斯随波流转",
+     "t0": 22.86,
+     "t1": 24.88,
+     "layout": "center",
+     "px": 200,
+     "words": [],
+     "glow": 0.55,
+     "seed": 3830
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.31,
+    "cue": {
+     "kind": "line",
+     "text": "直至阿卡德米亚",
+     "t0": 25.18,
+     "t1": 26.88,
+     "layout": "up_right",
+     "px": 170,
+     "words": [],
+     "glow": 0.55,
+     "seed": 4120
+    }
+   }
+  ]
+ },
+ {
+  "t0": 27.4,
+  "t1": 31.2,
+  "seed": 23,
+  "palette": "rust",
+  "glitch": [
+   0.05,
+   0.18
+  ],
+  "caption": {
+   "no": "PLATE 03",
+   "txt": "洞喻 · 被缚者",
+   "yr": "前 4 世纪"
+  },
+  "anno": {
+   "t": "囚禁",
+   "latin": "SPELUNCA"
+  },
+  "anno_pos": "br",
+  "cam": {
+   "seed": 7,
+   "handheld": 1.2,
+   "keys": [
+    [
+     0.0,
+     0.0,
+     0.01,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     -0.01,
+     -0.006,
+     0.095,
+     -0.45
+    ]
+   ]
+  },
+  "layers": [
+   {
+    "t": "bg",
+    "src": "cave",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "rust",
+    "fit": 1.08
+   },
+   {
+    "t": "prop",
+    "src": "chain",
+    "z": 0.6,
+    "x": 0.15,
+    "y": 0.815,
+    "h": 0.3
+   },
+   {
+    "t": "prop",
+    "src": "stele",
+    "z": 0.23,
+    "x": 0.845,
+    "y": 0.64,
+    "h": 0.9,
+    "depth_blur": 0.5
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "wave",
+     "text": "洞穴里有人囚禁",
+     "t0": 26.88,
+     "t1": 28.9,
+     "layout": "low_left",
+     "px": 190,
+     "words": [],
+     "glow": 0.55,
+     "seed": 8808
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.3,
+    "cue": {
+     "kind": "line",
+     "text": "有人指认出虚华",
+     "t0": 28.9,
+     "t1": 30.92,
+     "layout": "up_right",
+     "px": 180,
+     "words": [],
+     "glow": 0.55,
+     "seed": 117
+    }
+   }
+  ]
+ },
+ {
+  "t0": 31.2,
+  "t1": 35.6,
+  "seed": 29,
+  "palette": "sepia",
+  "glitch": [
+   0.06,
+   0.22
+  ],
+  "caption": {
+   "no": "PLATE 04",
+   "txt": "毒芹之杯",
+   "yr": "前 399"
+  },
+  "anno": {
+   "t": "毒鸩",
+   "latin": "PHARMAKON"
+  },
+  "anno_pos": "bl",
+  "cam": {
+   "seed": 11,
+   "handheld": 0.9,
+   "keys": [
+    [
+     0.0,
+     0.0,
+     0.022,
+     0.0,
+     0.2
+    ],
+    [
+     1.0,
+     0.014,
+     -0.018,
+     0.08,
+     -0.25
+    ]
+   ]
+  },
+  "layers": [
+   {
+    "t": "bg",
+    "src": "hemlock",
+    "idx": 0,
+    "z": 1.0,
+    "palette": "sepia",
+    "fit": 1.04
+   },
+   {
+    "t": "prop",
+    "src": "book",
+    "z": 0.62,
+    "x": 0.76,
+    "y": 0.8,
+    "h": 0.28
+   },
+   {
+    "t": "prop",
+    "src": "drapery",
+    "z": 0.25,
+    "x": 0.165,
+    "y": 0.76,
+    "h": 0.7,
+    "depth_blur": 0.9
+   },
+   {
+    "t": "type",
+    "z": 0.31,
+    "cue": {
+     "kind": "line",
+     "text": "也有人饮下毒鸩",
+     "t0": 30.92,
+     "t1": 32.84,
+     "layout": "low_left",
+     "px": 195,
+     "words": [],
+     "glow": 0.55,
+     "seed": 9340
+    }
+   },
+   {
+    "t": "type",
+    "z": 0.31,
+    "cue": {
+     "kind": "punch",
+     "text": "将死生从容作答",
+     "t0": 32.84,
+     "t1": 35.16,
+     "layout": "center",
+     "px": 205,
+     "words": [],
+     "glow": 0.55,
+     "seed": 486
+    }
+   }
+  ]
+ }
+]

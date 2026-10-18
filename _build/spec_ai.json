@@ -1,0 +1,30 @@
+{
+  "outDir": "assets/ai",
+  "style": "Layered paper-collage plate for an art-film: 19th-century steel engraving and mezzotint fused with torn parchment layers and stone mosaics. Strictly muted sepia, bone white, charcoal and dusty ochre — no saturated colour. Dramatic single-source chiaroscuro, deep black gaps and soft drop shadows between the paper layers so the composition reads as a physical 3D stack of plates. Visible engraving cross-hatching, foxed paper grain, dust motes and a faint light shaft. Cinematic 16:9 composition with empty dark space for typography. NO TEXT, NO LETTERS, NO WORDS, NO WATERMARK, NO FRAME, NO BORDER.",
+  "items": [
+    { "name": "cave", "prompt": "Interior of a vast cave; prisoners chained facing a wall of firelight, shadows of objects cast on the rock face, silhouettes small against the glow." },
+    { "name": "academy", "prompt": "Marble colonnade of a Greek academy at dawn, broken columns, olive trees, distant hills, a single figure walking among them." },
+    { "name": "hemlock", "prompt": "Extreme close-up of a bronze cup of hemlock on a stone ledge, condensation, a hand resting beside it, very shallow depth." },
+    { "name": "socrates", "prompt": "A bearded philosopher seated, hand raised mid-speech, cloth draped, pupils grieving in the shadow behind him, classical death scene." },
+    { "name": "celestial", "prompt": "A gothic celestial city floating above clouds, spires and light shafts descending to a small human figure below." },
+    { "name": "scriptorium", "prompt": "A monk at a slanted writing desk in a cold scriptorium, quill and illuminated manuscript pages, angled window light, dust." },
+    { "name": "disputation", "prompt": "Crowded medieval disputation: rows of scholars in hoods facing each other, one standing with an open book, faces emerging from the dark." },
+    { "name": "rose", "prompt": "Interior of a gothic cathedral, a huge rose window casting geometric light on the stone floor, vast empty nave." },
+    { "name": "idol", "prompt": "A colossal seated idol statue cracking apart, fragments suspended mid-fall, dust clouds, light breaking through the fissures." },
+    { "name": "clockwork", "prompt": "An orrery and clockwork mechanism disassembled and floating, brass gears and spheres, a giant human eye overlaid as an engraving." },
+    { "name": "lens", "prompt": "A lens grinder's workshop, glass lens catching a cone of light, geometric diagrams etched onto the wall, hand tools." },
+    { "name": "slate", "prompt": "A blank wax tablet and stylus on a scrivener's desk, untouched surface, quills and inkwell, raking light." },
+    { "name": "doubt", "prompt": "A 17th-century portrait dissolving into smoke and engraved line, half the face gone, the page beneath showing through." },
+    { "name": "stars", "prompt": "A lone figure on a ridge under an enormous star field, celestial spheres and orbital lines engraved over the sky." },
+    { "name": "pyramid", "prompt": "A colossal stepped pyramid of stacked paper plates and stone blocks, spiralling stairway, tiny human silhouettes at its base." },
+    { "name": "forge", "prompt": "A blacksmith's forge: anvil, hammer mid-strike, sparks, chains on the wall, a figure's torso in the firelight." },
+    { "name": "industry", "prompt": "Industrial revolution factory hall, chimneys, belts and pistons, workers as small silhouettes, smoke filling the upper frame." },
+    { "name": "abyss", "prompt": "A lone figure standing at the edge of a bottomless dark chasm, a vast broken halo of light far above, extreme scale contrast." },
+    { "name": "commodity", "prompt": "A towering pile of identical mass-produced objects on a merchant's scale, price tags, coins, a faceless figure weighing them." },
+    { "name": "forest", "prompt": "A forest path at dusk, tall bare trunks, a faint clearing ahead, roots and fallen leaves, mist between the trees." },
+    { "name": "ladder", "prompt": "A wooden ladder leaning into darkness, its top rungs dissolving into empty paper, a faint light source beyond." },
+    { "name": "panopticon", "prompt": "Interior of a circular panopticon prison, radial cells, a central watchtower, shafts of light from the oculus, no people." },
+    { "name": "sisyphus", "prompt": "A figure pushing a huge boulder up an endless slope, the stone engraved with fissures, dust and sweat, monumental scale." },
+    { "name": "dawn", "prompt": "Sunrise breaking over a dark plain, a narrow blade of light cutting across, dust motes, a small figure walking into it." }
+  ]
+}

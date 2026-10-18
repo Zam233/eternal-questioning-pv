@@ -1,0 +1,11 @@
+{
+  "outDir": "assets/figures",
+  "transparent": true,
+  "style": "Cut-out portrait plate for a film: isolated on a fully transparent background, no backdrop, no frame, no text. Rendered as an aged steel engraving / lithograph transferred onto paper, with visible cross-hatching, foxing and grain, edges slightly torn. The face reads as a printed plate, not a photo. Soft ambient occlusion in the folds of the clothing.",
+  "items": [
+    { "name": "fig_plato", "prompt": "Head and shoulders of an elderly ancient Greek philosopher with a broad forehead and full beard, classical marble bust rendered as an engraving. LIGHTING: single hard light from the upper left, the right side of the face falling into cross-hatched shadow." },
+    { "name": "fig_socrates", "prompt": "Head and shoulders of a bald, snub-nosed ancient Greek philosopher with a thick unkempt beard, marble bust rendered as an engraving. LIGHTING: warm firelight from the right, the left side almost black." },
+    { "name": "fig_aquinas", "prompt": "Head and shoulders of a medieval Dominican friar, heavy hood, round plain face, tonsure, rendered as an aged engraving. LIGHTING: raking golden window light from the left, deep shadow on the right of the cowl." },
+    { "name": "fig_kant", "prompt": "Head and shoulders of an eighteenth-century German philosopher, powdered wig, narrow sharp face, engraved portrait. LIGHTING: flat cold northern light from the upper left, very little shadow." }
+  ]
+}

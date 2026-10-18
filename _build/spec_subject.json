@@ -1,0 +1,19 @@
+{
+  "outDir": "assets/subjects",
+  "transparent": true,
+  "style": "Cut-out subject layer for compositing in a film shot: isolated on a fully transparent background, no ground plane, no cast shadow on the ground, no backdrop, no text. Photorealistic, engraved-paper texture retained on the surface, fine grain, soft ambient occlusion inside crevices, sharp silhouette edges. The lighting stated in each item must be followed exactly — the layer is composited into that specific shot.",
+  "items": [
+    {
+      "name": "bound_figure",
+      "prompt": "A seated chained human figure seen from behind, shoulders and back only, body reading almost entirely as a dark silhouette. LIGHTING: a hard fire glow from the right rim-lights the right edge of the shoulders and arm; everything else is near black."
+    },
+    {
+      "name": "hand_cup",
+      "prompt": "A single weathered human hand holding a shallow bronze cup of dark liquid, forearm entering from the lower right, sleeve falling away. LIGHTING: one hard key from the upper right; the cup rim and the back of the hand catch light, the sleeve and lower left go to black."
+    },
+    {
+      "name": "scholar_desk",
+      "prompt": "A monk in a heavy hooded robe leaning over a slanted writing desk, quill in hand on an open manuscript, a small candle and an ink pot on the desk, all as one connected object. LIGHTING: raking golden window light from the left at a low angle, lighting the page and the side of his face, the right side and the background falling into deep shadow."
+    }
+  ]
+}

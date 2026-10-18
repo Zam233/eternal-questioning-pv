@@ -1,0 +1,9 @@
+{
+  "outDir": "assets/ai",
+  "style": "Full-frame background plate for a monochrome film shot: a 19th-century steel engraving / aquatint with dense cross-hatching, paper grain, torn and foxed edges, deep shadows, almost no highlights except one hard source. Monochrome only, no text, no lettering, no frame, no border. Composition must leave usable dark areas in the upper and lower thirds for type.",
+  "items": [
+    { "name": "panopticon_hall", "prompt": "Interior of a circular panopticon prison seen from the centre: three tiers of identical cells curving around the frame, a tiny barred figure at a desk inside each cell, wet stone floor, a dark dome above with no window. LIGHTING: one cold shaft from the top centre, everything else in black. Cropped so the tiers run off both edges." },
+    { "name": "crowd_glasses", "prompt": "A dense cinema audience in the 1950s, every face wearing the same cardboard stereoscopic 3-D glasses, rows of identical heads filling the whole frame from edge to edge, flash-lit foreground falling to black at the back. Ribbed texture of the glasses catching the flash." },
+    { "name": "mass_line", "prompt": "A long industrial conveyor line of identical faceless plaster mannequin heads moving out of the dark, harsh single floodlight raking across them, deep shadow behind, no workers, no text. Machine parts and clamps along the line." }
+  ]
+}

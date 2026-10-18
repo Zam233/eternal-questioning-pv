@@ -1,0 +1,21 @@
+{
+  "outDir": "assets/props",
+  "transparent": true,
+  "style": "Cut-out film prop, isolated on a fully transparent background, no ground, no shadow on the ground, no backdrop, no text. Physically lit with a single hard key light from upper left and deep shadow on the right, weathered stone / aged brass / old paper materials, very high detail, sharp silhouette edges suitable for compositing.",
+  "items": [
+    { "name": "column_a", "prompt": "A tall fluted marble column with a broken top, Corinthian capital, three-quarter view." },
+    { "name": "column_b", "prompt": "A short thick stone column drum with carved volutes, seen straight on." },
+    { "name": "bust_a", "prompt": "A weathered marble bust of a bearded old philosopher, blank eyes, frontal three-quarter." },
+    { "name": "bust_b", "prompt": "A marble bust of a young man with short hair, cracks across the face, frontal." },
+    { "name": "stele", "prompt": "A rough broken stone stele slab with faint engraved abstract marks, no readable writing." },
+    { "name": "gear", "prompt": "A cluster of aged brass clockwork gears and a small orrery sphere, mechanical." },
+    { "name": "brazier", "prompt": "An iron fire bowl with burning coals, embers rising, dark metal." },
+    { "name": "book", "prompt": "A heavy open manuscript book with curling parchment pages, spine cracked." },
+    { "name": "arch", "prompt": "A fragment of a gothic pointed arch in carved limestone, keystone visible." },
+    { "name": "drapery", "prompt": "A single heavy folded cloth drape hanging, wool texture, deep folds." },
+    { "name": "skull", "prompt": "A human skull with a faint engraved crack, memento mori prop." },
+    { "name": "ladder", "prompt": "A weathered wooden ladder section, four rungs, leaning slightly." },
+    { "name": "chain", "prompt": "A coil of heavy rusted iron chain links." },
+    { "name": "frame", "prompt": "An ornate gilded empty picture frame, baroque carving, no picture inside." }
+  ]
+}

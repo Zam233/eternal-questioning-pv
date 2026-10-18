@@ -1,0 +1,50 @@
+[
+ {
+  "t0": 0.0, "t1": 6.0, "kind": "intro", "seed": 11,
+  "asset": ["plato", 0], "mode": "ghost", "zoom": [1.0, 1.06], "plate_alpha": 0.55,
+  "title": "追问", "anim": "punch", "tsize": 400, "ty": 0.45, "glow": 0.9,
+  "label": "PHILOSOPHIA", "caption": {"no": "PLATE 00", "txt": "序 · 爱智", "yr": ""},
+  "glitch": [0.15, 0.05],
+  "beam": {"angle": -14, "center": 0.44, "width": 0.20, "amt": 0.9}
+ },
+ {
+  "t0": 6.0, "t1": 12.0, "kind": "verse", "seed": 23,
+  "asset": ["plato", 1], "mode": "plate", "zoom": [1.04, 1.18],
+  "title": "理念", "anim": "wipe", "tsize": 340, "ty": 0.40, "glow": 0.4,
+  "label": "EIDOS  /  \u4e07\u7269\u7684\u539f\u578b", "scrim": 0.30,
+  "caption": {"no": "PLATE 01", "txt": "洞穴之喻", "yr": "前 387"},
+  "ghost": {"text": "ιδέα", "size": 700, "alpha": 0.30, "dx": 0.10},
+  "glitch": [0.05, 0.18],
+  "lyric": [{"t": "有人用理念构筑", "t0": 6.2, "t1": 8.6}, {"t": "名为本体的神话", "t0": 8.7, "t1": 11.6}]
+ },
+ {
+  "t0": 12.0, "t1": 18.0, "kind": "verse", "seed": 31,
+  "asset": ["socrates", 0], "mode": "plate", "zoom": [1.12, 1.02],
+  "title": "毒鸩", "anim": "rise", "tsize": 300, "ty": 0.44, "glow": 0.5,
+  "label": "PHARMAKON", "scrim": 0.25,
+  "caption": {"no": "PLATE 02", "txt": "苏格拉底之死", "yr": "前 399"},
+  "glitch": [0.08, 0.30],
+  "lyric": [{"t": "也有人饮下毒鸩", "t0": 12.2, "t1": 14.8}, {"t": "将死生从容作答", "t0": 14.9, "t1": 17.6}]
+ },
+ {
+  "t0": 18.0, "t1": 24.0, "kind": "prechorus", "seed": 41,
+  "asset": ["cathedral", 0], "mode": "mosaic", "zoom": [1.0, 1.14],
+  "title": "天城", "anim": "assemble", "tsize": 340, "ty": 0.40, "glow": 0.7,
+  "label": "CIVITAS DEI", "scrim": 0.10,
+  "caption": {"no": "PLATE 03", "txt": "上帝之城", "yr": "426"},
+  "glitch": [0.25, 0.55], "tear": 0.15,
+  "beam": {"angle": 22, "center": 0.5, "width": 0.12, "amt": 0.7},
+  "lyric": [{"t": "神谕中有座天城", "t0": 18.2, "t1": 20.8}, {"t": "托名唤作耶和华", "t0": 20.9, "t1": 23.6}]
+ },
+ {
+  "t0": 24.0, "t1": 30.0, "kind": "chorus", "seed": 53,
+  "asset": ["ruins", 0], "mode": "ink", "zoom": [1.0, 1.20],
+  "title": "崩塌", "anim": "shatter", "tsize": 380, "ty": 0.42, "glow": 1.1,
+  "label": "RUINA", "scrim": 0.0,
+  "caption": {"no": "PLATE 04", "txt": "蒙昧的终结", "yr": "15 C."},
+  "ghost": {"text": "神座", "size": 800, "alpha": 0.25, "dx": -0.12, "dy": 0.06},
+  "glitch": [0.35, 0.95], "tear": 0.3,
+  "beam": {"angle": -28, "center": 0.38, "width": 0.10, "amt": 1.2},
+  "lyric": [{"t": "神座在蒙昧后", "t0": 24.2, "t1": 26.2}, {"t": "渐渐崩塌", "t0": 26.3, "t1": 28.4}]
+ }
+]

@@ -1,0 +1,16 @@
+{
+  "outDir": "assets/era",
+  "style": "Wide plate for the opening title cards of an art film. Layered paper-collage and steel-engraving texture fused with old photography: visible paper grain, foxing, fine cross-hatching, deep chiaroscuro, muted earth palette (bone, charcoal, dusty ochre, faded indigo). The composition must leave the TOP-LEFT corner empty and dark for a small index number, and the CENTRE-LOWER third calm and low-detail for a large title. Cinematic 16:9. NO TEXT, NO LETTERS, NO WATERMARK, NO BORDER.",
+  "items": [
+    { "name": "era01_ionia", "prompt": "Aegean coastline at dusk, dark sea and a low fire on broken stone ruins, distant hills, elemental water and fire, almost no figures." },
+    { "name": "era02_cave_academy", "prompt": "The mouth of a cave on the left opening onto a sunlit marble colonnade on the right, two worlds joined by a shaft of light." },
+    { "name": "era03_gothic", "prompt": "Interior of a gothic cathedral, immense shafts of light through clerestory windows, empty nave, stone floor in shadow." },
+    { "name": "era04_slate_mirror", "prompt": "A wax tablet and a hand mirror side by side on a dark table, with a faint geometric diagram incised in the wood between them." },
+    { "name": "era05_bastille", "prompt": "Ruins of a stone fortress at dawn, broken chains and rubble, a torn flag on a pike, smoke low on the ground." },
+    { "name": "era06_factory_book", "prompt": "Interior of a nineteenth-century factory, iron gears and belts in the dark, a single open book resting on a machine, dust in a shaft of light." },
+    { "name": "era07_winterpalace", "prompt": "A long palace corridor at night, marble columns, a red banner hanging, snow light through tall windows, empty." },
+    { "name": "era08_lab", "prompt": "A turn-of-the-century laboratory bench, brass instruments, gauges and glass vessels, a single lamp, deep shadow around." },
+    { "name": "era09_logic_board", "prompt": "A dark lecture blackboard covered with faint chalk symbols and proof notation, a typewriter at the lower edge, raking light." },
+    { "name": "era10_machine", "prompt": "A cold computer hall, rows of dark server racks, faint network-like light traces on the floor, one distant blue glow." }
+  ]
+}

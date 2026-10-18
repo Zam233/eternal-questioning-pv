@@ -1,0 +1,15 @@
+{
+  "outDir": "assets/props",
+  "transparent": true,
+  "style": "Cut-out film prop, isolated on a fully transparent background, no backdrop, no text. Heavy aged fabric with visible weave, dust and worn edges, lit from behind so the cloth glows at its torn edges.",
+  "items": [
+    {
+      "name": "flag_fr",
+      "prompt": "A torn French tricolour flag on a wooden pole, blue-white-red vertical bands, the red browned and dirty, edges frayed and burnt, hanging at an angle as if in still air. LIGHTING: strong backlight from the upper left so the cloth glows and the pole reads as a dark silhouette."
+    },
+    {
+      "name": "flag_red",
+      "prompt": "A large tattered red banner on a rough pole, cloth heavy and stained dark at the bottom, folds deep, edges frayed. LIGHTING: hard warm backlight from behind, the banner glowing crimson at the edges, the pole a black silhouette."
+    }
+  ]
+}
