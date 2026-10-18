@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """A real pinhole camera driving a stack of 2.5D layers, with rack focus.
 
         dz = Z - cam.z
@@ -79,6 +79,7 @@ class Cam:
             y += float(nd.get("dy", 0.0)) * g
             z += float(nd.get("dz", 0.0)) * g
             roll += float(nd.get("dr", 0.0)) * g
+            focus += float(nd.get("df", 0.0)) * g
         if self.handheld:
             h = 0.0016 * self.handheld
             x += h * np.sin(u * 7.3 + self.seed)

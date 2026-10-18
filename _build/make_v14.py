@@ -161,6 +161,17 @@ def CAM(x0=0.0, x1=0.0, y0=0.0, y1=0.0, z0=0.0, z1=0.0, r0=0.0, r1=0.0,
 
 S = shots
 
+# 微场景风格表：(名字, dx, dy, dz, dr, df)
+#   push 推近 / pull 退开 / truck 横移 / rise 升降 / rack 移焦 / roll 甩滚
+MICRO = [
+    ("push", 0.022, -0.010, 0.030, 0.20, 0.00),
+    ("pull", -0.016, 0.008, -0.026, -0.14, 0.00),
+    ("truck", 0.030, 0.000, 0.008, 0.08, 0.00),
+    ("rise", 0.000, -0.016, 0.014, 0.00, 0.00),
+    ("rack", 0.008, 0.000, 0.010, 0.00, 0.24),
+    ("roll", 0.012, -0.006, 0.012, 0.30, 0.06),
+]
+
 
 def build(link, palette, grade, layers, cam, cap, anno, seed,
           glitch=(0.04, 0.12), tail=0.70, credits=None, fixed=None):
@@ -194,13 +205,15 @@ def build(link, palette, grade, layers, cam, cap, anno, seed,
         t1 = round(fixed[1] if fixed else t0 + 6.0, 3)
     cam["dur"] = round(t1 - t0, 3)
     nd = []
+    base = (int(round(t0 * 7)) + int(seed)) % len(MICRO)
     for i, c in enumerate(cues):
-        sgn = 1 if i % 2 == 0 else -1
         at = max(round(c["t0"] - t0, 3), 0.60)
-        # 微场景：每句一次"推一下 + 回半口气"，读作同一镜里的两次呼吸
-        nd.append(dict(t=at, w=0.34, dx=0.022 * sgn, dy=-0.010, dz=0.030, dr=0.20 * sgn))
-        nd.append(dict(t=round(at + 0.62, 3), w=0.26, dx=-0.011 * sgn, dy=0.006,
-                       dz=-0.015, dr=-0.10 * sgn))
+        # 微场景：每句换一种镜头小动作（推 / 拉 / 横移 / 升降 / 移焦 / 甩滚），
+        # 句首做满、0.62 s 后回不到一半，读作同一镜里的两次呼吸
+        _, dx, dy, dz, dr, df = MICRO[(base + i) % len(MICRO)]
+        nd.append(dict(t=at, w=0.34, dx=dx, dy=dy, dz=dz, dr=dr, df=df))
+        nd.append(dict(t=round(at + 0.62, 3), w=0.26, dx=-dx * 0.42, dy=-dy * 0.42,
+                       dz=-dz * 0.42, dr=-dr * 0.42, df=-df * 0.42))
     cam["nudges"] = nd
     d = dict(t0=t0, t1=t1, xfade=0.0, seed=seed, palette=palette,
              glitch=list(glitch), grade=grade, cam=cam, link=lk, tr_in=None,
@@ -444,7 +457,9 @@ add(dict(out="up", dur=0.50, za=1.20, ra=3), "sepia", ASH,
 add(dict(out="right", dur=0.52, za=1.14, ra=-4, zb=1.10), "gold", GOLD,
     [BG("rose", idx=1, fit=1.06, palette="gold"),
      FX("smoke", z=0.50, count=7, alpha=0.22, seed=91),
-     FIG("fig_marx", 0.16, 0.46, h=0.88, z=0.22, alpha=0.94),
+     FIG("fig_marx", 0.175, 0.47, h=0.98, z=0.21, alpha=0.96),
+     PR("flag_red", 0.845, 0.40, h=0.64, z=0.34, tilt=-7,
+        raw_colour=True, alpha=0.92),
      TY(cue("批判宗教的先驱", dy=-0.10, erase=True, kind="strike")),
      TY(cue("将迷雾荡涤振刷", dy=0.18, erase=True))],
     CAM(x0=0.010, x1=-0.012, y0=0.006, y1=-0.008, z0=0.006, z1=0.096, r0=0.10, r1=-0.16,
@@ -456,6 +471,9 @@ add(dict(out="right", dur=0.52, za=1.14, ra=-4, zb=1.10), "gold", GOLD,
 add(dict(out="left", dur=0.55, za=1.18, ra=3), "sepia", WARM,
     [BG("forge", fit=1.05),
      FX("sparks", z=0.50, count=110, alpha=0.95, rise=0.6, seed=92),
+     FIG("fig_marx", 0.855, 0.46, h=0.92, z=0.22, alpha=0.95),
+     PR("flag_red", 0.155, 0.40, h=0.58, z=0.34, tilt=8, flip=True,
+        raw_colour=True, alpha=0.90),
      TY(cue("写下实践的新章", dy=-0.10, erase=True)),
      TY(cue("待批判者再出发", dy=0.18, erase=True))],
     CAM(x0=-0.012, x1=0.010, z0=0.0, z1=0.102, r0=-0.16, r1=0.12, f0=0.66, f1=0.32, seed=45),

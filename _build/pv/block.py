@@ -373,6 +373,18 @@ def _chars(img, cue, t, kind):
             dx = (t - t0) * C.W * 0.55
             a = p * amul
 
+        # 错落：同一行里每个字的大小、高低、微倾都不同，整行还带一点斜度，
+        # 让字排看起来像手工排的版面，而不是一条等宽等高的带子
+        st = float(cue.get("stagger", 1.0))
+        if st > 0.0:
+            sd = 1.0 if (int(cue.get("seed", 1)) & 1) else -1.0
+            span = (i / max(1, n - 1)) - 0.5
+            dy += px * 0.115 * st * span * 2.0 * sd
+            s *= 1.0 + 0.115 * st * (u - 0.5) * 2.0
+            dy += px * 0.105 * st * (_hash(cue.get("seed", 1), i * 7 + 3) - 0.5) * 2.0
+            r += 3.2 * st * (_hash(cue.get("seed", 1), i * 13 + 5) - 0.5) * 2.0
+            dx += px * 0.05 * st * (_hash(cue.get("seed", 1), i * 17 + 9) - 0.5) * 2.0
+
         a *= amul
         if kind == "squash":
             pass

@@ -1,0 +1,8 @@
+{
+  "outDir": "assets/subjects",
+  "transparent": true,
+  "style": "Cut-out layer for compositing into a monochrome film shot: the subject is isolated on a fully transparent background, no backdrop, no frame, no cast shadow on any ground, no text, no border. Rendering must read as a 19th-century steel engraving / aquatint: dense cross-hatching, paper grain, soft burr, sharp torn silhouette edge. Extreme chiaroscuro: one hard key light, the far side of the face falling to near black. No colour.",
+  "items": [
+    { "name": "fig_heidegger", "prompt": "Head and shoulders of a 1920s German philosopher: a full head of short dark hair combed back, CLEAN-SHAVEN, no moustache, no beard, deep-set watchful eyes under a heavy brow, high forehead, dark suit and tie, facing three-quarters left. LIGHTING: hard key from the left, the far side of the face going to black." }
+  ]
+}

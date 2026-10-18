@@ -242,13 +242,27 @@ def main():
     for s in shots:
         for nd in (s.get("cam") or {}).get("nudges") or []:
             if abs(nd.get("dx", 0)) > 0.030 or abs(nd.get("dz", 0)) > 0.040 \
-                    or abs(nd.get("dr", 0)) > 0.32:
+                    or abs(nd.get("dr", 0)) > 0.32 or abs(nd.get("df", 0)) > 0.30:
                 bad.append("镜@%.2f nudge 过大" % s["t0"])
                 break
     if bad:
-        r.fail("R11", "逐句 nudge 幅度上限 (0.03,0.02,0.04,0.32)", "; ".join(bad[:6]))
+        r.fail("R11", "逐句 nudge 幅度上限 (0.03,0.02,0.04,0.32, 焦点0.30)", "; ".join(bad[:6]))
     else:
-        r.ok("R11", "逐句 nudge 幅度在限内")
+        styles = set()
+        for s in shots:
+            for nd in (s.get("cam") or {}).get("nudges") or []:
+                if abs(nd.get("df", 0)) > 0.1:
+                    styles.add("rack")
+                elif abs(nd.get("dz", 0)) > 0.02:
+                    styles.add("push" if nd["dz"] > 0 else "pull")
+                elif abs(nd.get("dx", 0)) > 0.02:
+                    styles.add("truck")
+                elif abs(nd.get("dr", 0)) > 0.2:
+                    styles.add("roll")
+                elif abs(nd.get("dy", 0)) > 0.012:
+                    styles.add("rise")
+        r.ok("R11", "逐句 nudge 幅度在限内；微场景用了 %d 种镜头手法：%s"
+             % (len(styles), "/".join(sorted(styles))))
 
     # ---------------------------------------------------------------- R12/R13/R14/R15 文字
     b13, b14, b15 = [], [], []
