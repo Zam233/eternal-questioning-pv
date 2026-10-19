@@ -3,7 +3,6 @@
 > 一支用代码逐帧渲染的歌词 PV：每一帧都是时间 `t` 的纯函数。没有剪辑软件，没有手工关键帧。
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
-[![Bilibili](https://img.shields.io/badge/Bilibili-BV1xCai6aE9g-00A1D6.svg)](https://www.bilibili.com/video/BV1xCai6aE9g/)
 
 - 成片：1920×1080 / 24 fps / 4:22.8（262.8 s）
 - 画面素材：大都会艺术博物馆 Open Access 公版版画 + AI 生成的铜版刻线人物层
@@ -109,7 +108,7 @@ python -m pv.build frames --shots shots_v19.json --start 0 --end 6307 `
 
 - 参考项目：[**MisakaZentai/world-execute-me-dsh-pv**](https://github.com/MisakaZentai/world-execute-me-dsh-pv)
 - 成片发布：[Bilibili · BV1xCai6aE9g](https://www.bilibili.com/video/BV1xCai6aE9g/)
-- 参考片：[《过期童话》](https://www.bilibili.com/video/BV1xCai6aE9g/)（镜头语法与文字层的逐帧研究见 `PV_参考片逐帧研究.md`）
+- 参考片：[《过期童话》](https://www.bilibili.com/video/BV1xCai6aE9g/)
 
 ---
 
