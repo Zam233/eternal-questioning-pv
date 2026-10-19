@@ -270,7 +270,7 @@ def _chars(img, cue, t, kind):
         cx = L["x"] * C.W - total / 2
     else:
         cx = L["x"] * C.W
-    cy = L["y"] * C.H
+    cy = float(cue["anchor_y"]) * C.H if cue.get("anchor_y") else L["y"] * C.H
     cx += float(cue.get("_cam_dx", 0.0) or 0.0) * C.W
 
     bleed = kind == "bleed" or cue.get("bleed")
@@ -318,9 +318,45 @@ def _chars(img, cue, t, kind):
 
     x = cx - total / 2
     n = len(chars)
+    # ---- 逐字规格（来自文字分镜表）：一字一项，不给就均排
+    gs = cue.get("glyph") or []
+    tr_em = cue.get("track_em")
+    tr_em_none = tr_em is None
+    segs = cue.get("segs") or []
+    seg_off = {}
+    if len(segs) > 1:
+        for sg in segs:
+            k = int(sg.get("idx", 0))
+            side = -1.0 if k == 0 else 1.0
+            seg_off[int(sg.get("start", 0))] = (
+                side * 0.105 * C.W,
+                (0.055 if k == 0 else -0.055) * C.H)
+    slope = float(cue.get("slope", 0.0))
+    tanp = float(np.tan(np.radians(slope))) if abs(slope) > 0.01 else 0.0
+    drift = float(cue.get("drift", 0.0))
+    sink = float(cue.get("sink", 0.0))
+    retreat = bool(cue.get("retreat", False))
+    tsz = max(1e-3, t1 - t0)
+    if gs and tr_em_none:
+        steps = [steps[i] * (0.45 + 0.42 * float((gs[i] if i < len(gs) else {}).get("s", 1.0)))
+                 for i in range(n)]
+        total = sum(steps)
+        room = C.W - 2 * C.SAFE - 24
+        if total > room:
+            kk = room / total
+            steps = [v * kk for v in steps]
+            total = room
+        x = cx - total / 2
+    if tr_em is not None:
+        stp_u = float(px) * (1.0 + float(tr_em))
+        steps = [stp_u] * n
+        total = stp_u * n
+        x = cx - total / 2
     for i, (sp, adv) in enumerate(chars):
         stp = steps[i]
         on = float(words[i]["t0"]) if i < len(words) else t0 + i * 0.06
+        if i < len(gs) and gs[i].get("at") is not None:
+            on = float(gs[i]["at"])
         on = min(on, t1 - 0.22)          # every glyph gets at least 0.22 s on screen
         p = T.ease_out(T.clamp((t - on) / 0.20))
         if p <= 0.004:
@@ -334,6 +370,51 @@ def _chars(img, cue, t, kind):
             rem = T.clamp((t - (t1 - 0.22 + (n - 1 - i) * (0.18 / max(1, n)))) / 0.08)
             a *= (1.0 - rem)
         u = _hash(cue.get("seed", 1), i)
+
+        # ---- 逐字规格：大小 / 高低 / 微移 / 旋转 / 明暗 / 动作
+        g = gs[i] if i < len(gs) else None
+        act = None
+        if g:
+            s *= float(g.get("s", 1.0))
+            dy += float(g.get("dy", 0.0)) * px / 100.0
+            dx += float(g.get("dx", 0.0)) * px / 100.0
+            r += float(g.get("r", 0.0))
+            act = g.get("act")
+            if act == "burn":
+                a0 = float(g.get("a", 1.0))
+                a1 = float(g.get("a1", a0 * 0.45))
+                uu = float(np.clip((t - t0) / tsz, 0.0, 1.0))
+                a *= a0 + (a1 - a0) * uu
+            else:
+                a *= float(g.get("a", 1.0))
+        if i in seg_off:
+            dx += seg_off[i][0]
+            dy += seg_off[i][1]
+        if tanp:
+            dy += tanp * (x + stp / 2.0 - cx)
+        if drift:
+            dx += drift * C.W * (t - t0)
+        if sink:
+            dy += sink * px * (t - t0)
+        if retreat:
+            s *= 1.0 - 0.03 * float(np.clip((t - t0) / tsz, 0.0, 1.0))
+        if act == "slam":
+            s *= 1.0 + 0.55 * (1.0 - p)
+            dy -= 20.0 * (1.0 - p)
+        elif act == "stamp":
+            s *= 1.06 - 0.06 * p
+        elif act == "land":
+            dy -= 24.0 * (1.0 - p)
+        elif act == "lift":
+            dy += 18.0 * (1.0 - p)
+        elif act == "wipe":
+            dx -= 30.0 * (1.0 - p)
+            a *= p
+        elif act == "tremble":
+            dx += float(np.sin(t * 37.0 + i)) * 1.2
+        elif act == "cut":
+            dx += (-6.0 if i % 2 == 0 else 6.0) * (1.0 - p)
+            r += (-2.0 if i % 2 == 0 else 2.0) * (1.0 - p)
 
         if kind == "wave":
             dy = -abs(np.sin((i * 0.9) + cue.get("phase", 0.0))) * px * 0.18
@@ -375,7 +456,7 @@ def _chars(img, cue, t, kind):
 
         # 错落：同一行里每个字的大小、高低、微倾都不同，整行还带一点斜度，
         # 让字排看起来像手工排的版面，而不是一条等宽等高的带子
-        st = float(cue.get("stagger", 1.0))
+        st = float(cue.get("stagger", 1.0)) if not gs else 0.0
         if st > 0.0:
             sd = 1.0 if (int(cue.get("seed", 1)) & 1) else -1.0
             span = (i / max(1, n - 1)) - 0.5
