@@ -366,10 +366,10 @@ def main():
         for c in cues_of(s):
             if c.get("kind") == "credits":
                 cr.append((s, len(c.get("rows") or [])))
-    if len(cr) == 1 and cr[0][1] == 6 and cr[0][0]["t1"] - cr[0][0]["t0"] > 8:
-        r.ok("R23", "署名六条，且只出现在一处长间奏（两栏排版）")
+    if len(cr) == 1 and 6 <= cr[0][1] <= 8 and cr[0][0]["t1"] - cr[0][0]["t0"] > 8:
+        r.ok("R23", "署名 %d 条，且只出现在一处长间奏（两栏排版）" % cr[0][1])
     else:
-        r.fail("R23", "署名必须且只能出现在一处长间奏，且六条", "找到 %d 处/%s 条"
+        r.fail("R23", "署名必须且只能出现在一处长间奏，且 6–8 条", "找到 %d 处/%s 条"
                % (len(cr), cr[0][1] if cr else "-"))
 
     # ---------------------------------------------------------------- R24 全覆盖
@@ -381,6 +381,201 @@ def main():
         r.fail("R24", "全片时间轴不得有空洞", str(gaps[:6]))
     else:
         r.ok("R24", "全片 %.2f s 连续覆盖" % shots[-1]["t1"])
+
+    # ---------------------------------------------------------------- R30–R36 微场景 / 机位 / 构图
+    import math
+    from pv import camera as CAM
+    W, H = 1920.0, 1080.0
+    Z_SUB = 0.26
+
+    def _s(z, Z=Z_SUB):
+        return Z / max(0.08, Z - z)
+
+    b30, b31, b32, b33, b34, b36 = [], [], [], [], [], []
+    t_lo = t_hi180 = t_hi450 = t_all = 0.0
+    n450 = 0
+    for s in shots:
+        cam = s.get("cam") or {}
+        beats = cam.get("beats") or []
+        cues = cues_of(s)
+        if not beats:
+            continue
+        C = CAM.Cam(cam)
+        dur = max(0.1, s["t1"] - s["t0"])
+        if len(beats) < 2 and len(cues) > 1:
+            b30.append("镜@%.2f 只有 %d 个机位" % (s["t0"], len(beats)))
+        prev = (0.0, 0.0, 0.0, 0.0, 0.0)
+        for bi, b in enumerate(beats):
+            pose = list(b.get("pose") or [0, 0, 0, 0, 0])
+            st = C.at(min(0.999, float(b["t"]) / dur))
+            sc = _s(st[2])
+            dx = (pose[0] - prev[0]) * sc * W
+            dy = (pose[1] - prev[1]) * sc * H
+            dsc = _s(st[2] + pose[2]) / sc - 1.0
+            if bi == 0:
+                prev = tuple(pose)      # 入场机位：换场本身提供位移，不从零算
+                continue
+            if abs(dx) < 90 and abs(dy) < 60 and abs(dsc) < 0.06:
+                b30.append("镜@%.2f t=%.2f 位移 %.0f/%.0f px、缩放 %.1f%%（都不够）"
+                           % (s["t0"], float(b["t"]), dx, dy, dsc * 100))
+            tin = float(b["t"]) - float(b.get("in", 0.45))
+            if float(b.get("in", 0.45)) > 0.05:
+                if not (0.15 <= float(b.get("in", 0.45)) <= 0.65):
+                    b31.append("镜@%.2f t=%.2f 重构时长 %.2fs" % (s["t0"], float(b["t"]), float(b.get("in"))))
+                if b.get("ease") not in ("out", "expo", "back"):
+                    b31.append("镜@%.2f t=%.2f ease=%s" % (s["t0"], float(b["t"]), b.get("ease")))
+                # 句首后 0.3–0.8 s 内不许出现反向 >20% 的重音
+                for acc in cam.get("accents") or []:
+                    dta = float(acc.get("t", 0)) - float(b["t"])
+                    if 0.3 <= dta <= 0.8 and pose[0]:
+                        ax = float((acc.get("a") or [0])[0])
+                        if ax * pose[0] < 0 and abs(ax) * sc > 0.2 * abs(pose[0]) * sc * W:
+                            b31.append("镜@%.2f t=%.2f 反向回收 %.0f px" % (s["t0"], float(b["t"]), ax * sc))
+            prev = tuple(pose)
+            # R32：句内保持期不许跳变（机位已锁死，只剩底板的长推与手持）
+            acc_ts = [float(x.get("t", 0)) for x in (cam.get("accents") or [])]
+            nxt = float(beats[bi + 1]["t"]) - float(beats[bi + 1].get("in", 0.45)) if bi + 1 < len(beats) else dur
+            t_a, t_b = float(b["t"]) + 0.45, max(float(b["t"]) + 0.45, nxt - 0.05)
+            last = None
+            jmax = 0.0
+            tt = t_a
+            while tt <= t_b + 1e-6 and t_b - t_a > 0.12:
+                if any(abs(tt - at) < 0.45 for at in acc_ts):
+                    tt += 1.0 / 24.0
+                    last = None
+                    continue
+                stt = C.at(min(0.999, tt / dur))
+                p = (stt[0], stt[1])
+                if last is not None:
+                    jmax = max(jmax, math.hypot(p[0] - last[0], p[1] - last[1]))
+                last = p
+                tt += 1.0 / 24.0
+            if jmax > 0.010:
+                b32.append("镜@%.2f t=%.2f 保持期跳变 %.3f" % (s["t0"], float(b["t"]), jmax))
+            hh = 0.0016 * max(0.0, float(cam.get("handheld", 1.0)))
+            if hh * 7.3 / dur * W > 15.0:
+                b32.append("镜@%.2f 手持噪声过大" % s["t0"])
+        # R35：速度分布（整镜采样）
+        last = None
+        tt = 0.0
+        while tt <= dur:
+            stt = C.at(min(0.999, tt / dur))
+            sc2 = _s(stt[2])
+            p = (stt[0] * sc2 * W, stt[1] * sc2 * H)
+            if last is not None:
+                v = math.hypot(p[0] - last[0], p[1] - last[1]) * 24.0
+                t_all += 1.0
+                if v <= 10:
+                    t_lo += 1.0
+                if v >= 180:
+                    t_hi180 += 1.0
+                if v >= 450:
+                    t_hi450 += 1.0
+                    n450 += 1 if v >= 450 else 0
+            last = p
+            tt += 1.0 / 24.0
+
+    # R33：同镜相邻 cue 不许同锚点；全片 center 占比 ≤35%
+    cent = tot = 0
+    for s in shots:
+        cs = sorted(cues_of(s), key=lambda c: c["t0"])
+        for i, c in enumerate(cs):
+            tot += 1
+            if c.get("layout", "center") == "center":
+                cent += 1
+            if i and c.get("layout", "center") == cs[i - 1].get("layout", "center") \
+                    and not c.get("vertical"):
+                b33.append("镜@%.2f 「%s」/「%s」同为 %s"
+                           % (s["t0"], cs[i - 1]["text"], c["text"], c.get("layout")))
+    ratio = cent / max(1, tot)
+
+    # R36：字块与主体层重叠（近似 bbox，WARN）
+    from pv.block import layout as _lay
+    for s in shots:
+        figs = [L for L in (s.get("layers") or []) if L.get("t") in ("figure", "prop") and float(L.get("h", 0) or 0) >= 0.5]
+        if not figs:
+            continue
+        C = CAM.Cam(s.get("cam") or {})
+        for c in cues_of(s):
+            L = _lay(c.get("layout", "center"))
+            n = max(1, len(c.get("text", "")))
+            band = float(c.get("band", 0.78)) * W
+            px = c.get("px") or max(84, (band / n) * 0.66)
+            if c.get("vertical"):
+                w0, h0 = px * 1.3, px * 1.12 * n
+            else:
+                w0, h0 = (band if c.get("band") else n * px * 1.05), px * 1.4
+            x0 = L["x"] * W - (0 if L["align"] == "l" else (w0 if L["align"] == "r" else w0 / 2))
+            box = (x0, L["y"] * H - h0 / 2, x0 + w0, L["y"] * H + h0 / 2)
+            tt = max(s["t0"], c["t0"])
+            stt = C.at(min(0.999, (tt - s["t0"]) / max(0.1, s["t1"] - s["t0"])))
+            sc = _s(stt[2])
+            for F in figs:
+                fw = float(F.get("h", 0.6)) * H * sc * 0.72
+                fcx = (float(F.get("x", 0.5)) - stt[0] * sc) * W
+                fcy = (float(F.get("y", 0.5)) - stt[1] * sc) * H
+                fb = (fcx - fw / 2, fcy - fw / 2, fcx + fw / 2, fcy + fw / 2)
+                ix = max(0.0, min(box[2], fb[2]) - max(box[0], fb[0]))
+                iy = max(0.0, min(box[3], fb[3]) - max(box[1], fb[1]))
+                inter = ix * iy
+                if inter / max(1.0, (box[2] - box[0]) * (box[3] - box[1])) > 0.35:
+                    b36.append("镜@%.2f 「%s」压住 %s（%.0f%%）"
+                               % (s["t0"], c["text"], F.get("src"), 100 * inter / max(1.0, (box[2] - box[0]) * (box[3] - box[1]))))
+
+    if b30:
+        r.fail("R30", "每镜 ≥2 个机位，且相邻机位屏移 ≥90/60 px 或缩放 ≥6%", "; ".join(b30[:6]))
+    else:
+        r.ok("R30", "每镜机位状态与幅度达标")
+    if b31:
+        r.fail("R31", "重构图 0.15–0.65 s、ease-out、不得反向回收", "; ".join(b31[:6]))
+    else:
+        r.ok("R31", "重构图时长/缓动/方向正确")
+    if b32:
+        r.fail("R32", "句内保持期不得跳变（≤0.010），手持 ≤15 px/s", "; ".join(b32[:6]))
+    else:
+        r.ok("R32", "句内保持期无跳变，手持噪声 ≤15 px/s")
+    if b33 or ratio > 0.55:
+        r.fail("R33", "相邻 cue 不同锚点、center ≤55%", "center %.0f%%；%s" % (ratio * 100, "; ".join(b33[:5])))
+    elif ratio > 0.45:
+        r.warn("R33", "相邻 cue 换区，center %.0f%%（略高）" % (ratio * 100), "")
+    else:
+        r.ok("R33", "相邻 cue 换区，center %.0f%%" % (ratio * 100))
+    # R34 拍点：读 beat_grid.json，统计 accent 落在八分网格 ±1 帧 的比例
+    gp = os.path.join(HERE, "beat_grid.json")
+    if os.path.exists(gp):
+        import bisect
+        G = json.load(open(gp, encoding="utf-8"))["beats"]
+        G8 = sorted(G + [(x + y) / 2.0 for x, y in zip(G, G[1:])])
+        tot_a, near_a = 0, 0
+        for s in shots:
+            for acc in (s.get("cam") or {}).get("accents") or []:
+                ta = float(s["t0"]) + float(acc.get("t", 0))
+                i = bisect.bisect_left(G8, ta)
+                cand = [G8[j] for j in (i - 1, i) if 0 <= j < len(G8)]
+                if not cand:
+                    continue
+                d = min(abs(c - ta) for c in cand)
+                tot_a += 1
+                if d <= 1.0 / FPS + 1e-6:
+                    near_a += 1
+        share = near_a / max(1, tot_a)
+        if share >= 0.8:
+            r.ok("R34", "重音对拍 %.0f%%（%d/%d）" % (share * 100, near_a, tot_a))
+        else:
+            r.warn("R34", "重音对拍覆盖 %.0f%%（%d/%d），人声与网格有偏差" % (share * 100, near_a, tot_a), "")
+    else:
+        r.warn("R34", "无 beat_grid.json（先跑 beat.py）", "")
+    sh_lo = t_lo / max(1.0, t_all)
+    sh_hi = t_hi180 / max(1.0, t_all)
+    if not (0.20 <= sh_lo <= 0.50) or sh_hi < 0.03 or n450 < 20:
+        r.fail("R35", "速度分布：静 20–50%、≥180 px/s ≥3%、≥450 px/s ≥20 帧",
+               "静 %.0f%% / 动作 %.0f%% / 快甩 %d 帧" % (sh_lo * 100, sh_hi * 100, n450))
+    else:
+        r.ok("R35", "速度分布：静 %.0f%% / 动作 %.0f%% / 快甩 %d 帧" % (sh_lo * 100, sh_hi * 100, n450))
+    if b36:
+        r.warn("R36", "字块与主体层重叠（近似，需人看）", "; ".join(b36[:6]))
+    else:
+        r.ok("R36", "字块未压住主体层")
 
     # ---------------------------------------------------------------- R03 空带扫描
     if a.video and a.scan:

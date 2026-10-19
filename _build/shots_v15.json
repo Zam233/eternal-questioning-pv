@@ -4710,13 +4710,13 @@
      "kind": "credits",
      "text": "credits",
      "t0": 91.8,
-     "t1": 104.4,
+     "t1": 106.2,
      "words": [],
      "seed": 1701,
      "alpha": 1.0,
      "step": 1.55,
      "y": 0.315,
-     "gap": 0.072,
+     "gap": 0.062,
      "px_role": 27,
      "px_name": 42,
      "x_role": 0.412,
@@ -4740,18 +4740,26 @@
        "Suno V6"
       ],
       [
+       "美术指导",
+       "GPT Astra"
+      ],
+      [
        "Agent",
        "Deepseek Harness"
       ],
       [
        "策划人",
        "扎姆"
+      ],
+      [
+       "参考",
+       "过期童话"
       ]
      ]
     }
    }
   ],
-  "_cue_end": 104.4,
+  "_cue_end": 106.2,
   "hide_meta": true
  },
  {

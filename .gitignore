@@ -28,3 +28,12 @@ _build/_sec4.md
 _build/ta_table.txt
 _build/words_dump.txt
 _build/api_watch.log
+# 预览图 / 测试图 / 临时数据（不入库）
+_build/_edittest_*.png
+_build/_gen_fig_*.png
+_build/_s1.png
+_build/_sheet_portraits.png
+_build/shots_*preview*.json
+_build/_audio_mono.wav
+_build/_rows.txt
+.dsh-vision-toolkit/

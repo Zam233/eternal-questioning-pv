@@ -290,14 +290,52 @@ def _meta(img, sh, u, t):
 
 
 # ------------------------------------------------------------------ post
+def halation(arr, amt):
+    """高光溢光：亮部晕开一层暖光，是"现代"后期里最便宜的一档质感。"""
+    if amt <= 0.01:
+        return arr
+    lum = arr.max(axis=2)
+    m = np.clip((lum - 185.0) / 70.0, 0.0, 1.0)
+    if float(m.max()) < 0.02:
+        return arr
+    from PIL import Image, ImageFilter
+    mi = Image.fromarray((m * 255.0).astype(np.uint8)).filter(ImageFilter.GaussianBlur(16))
+    soft = np.asarray(mi).astype(np.float32) / 255.0
+    warm = np.array([255.0, 219.0, 176.0], np.float32)
+    return arr + (soft[..., None] ** 1.15) * warm * (0.5 * amt)
+
+
+_EDGE = {}
+
+
+def edge_mask(k, W=None, H=None):
+    """fxd 的"从四边压进来"：k=0 无，k=1 只留中央一条软亮带。"""
+    k = float(max(0.0, min(1.0, k)))
+    key = int(k * 40)
+    m = _EDGE.get(key)
+    if m is None:
+        kk = key / 40.0
+        yy, xx = np.mgrid[0:C.H, 0:C.W].astype(np.float32)
+        d = np.maximum(np.abs(xx / C.W - 0.5), np.abs(yy / C.H - 0.5)) * 2.0
+        thr = 1.0 - kk * 0.95
+        band = np.clip((d - thr) / 0.18, 0.0, 1.0)
+        m = (1.0 - 0.96 * band)[..., None].astype(np.float32)
+        _EDGE[key] = m
+    return m
+
+
 def post(img, sh, t, u):
     seed = sh.get("seed", 7) + int(t * C.FPS)
+    p = sh.get("post") or {}
+    scan_k = float(p.get("scan", 1.0))
+    glitch_k = float(p.get("glitch", 1.0))
+    bloom_k = float(p.get("bloom", 0.0))
     g = sh.get("glitch", [0.0, 0.0])
     amt = g[0] + (g[1] - g[0]) * T.ease_io(u)
     amt += 0.08 * T.value_noise_1d(t * 0.55, seed=sh.get("seed", 3))
     if u < 0.02 or u > 0.985:
         amt *= 0.3
-    amt = min(amt, 1.6)
+    amt = min(amt * glitch_k, 1.6)
     tear = sh.get("tear", 0.0) * amt
     gscale = (6.5 + 5.5 * amt) * sh.get("grain", 1.0)
 
@@ -307,18 +345,36 @@ def post(img, sh, t, u):
             gt = T.grain_tiles()
             out = G.post(img, sh, t, seed, amt, tear, gscale,
                          G._up("vig", T.vignette()),
-                         G._up("scan", T.scanlines(4, 0.05)),
+                         G._up("scan", T.scanlines(4, 0.05 * scan_k)),
                          G._up("gt%d" % (seed % len(gt)), gt[seed % len(gt)]))
             if out is not None:
+                out = halation(out, bloom_k)
+                e0 = float(p.get("edge0", 0.0)); e1 = float(p.get("edge1", 0.0))
+                if e0 or e1:
+                    out = out * edge_mask(e0 + (e1 - e0) * T.ease_io(u))
+                sc = p.get("scratch")
+                if sc:
+                    x = int(float(sc) * C.W)
+                    warm = np.array([205.0, 196.0, 178.0], np.float32)
+                    out[:, x:x + 2] = out[:, x:x + 2] * 0.55 + warm * 0.45 * 0.55
                 return out
         except Exception:
             pass
 
     arr = T.glitch(img, amt, seed=seed, tear=tear)
-    arr = arr * T.scanlines(4, 0.05)
+    arr = arr * T.scanlines(4, 0.05 * scan_k)
     gt = T.grain_tiles()
     arr = arr + gt[seed % len(gt)] * gscale
     arr = arr * T.vignette()
+    arr = halation(arr, bloom_k)
+    e0 = float(p.get("edge0", 0.0)); e1 = float(p.get("edge1", 0.0))
+    if e0 or e1:
+        arr = arr * edge_mask(e0 + (e1 - e0) * T.ease_io(u))
+    sc = p.get("scratch")
+    if sc:
+        x = int(float(sc) * C.W)
+        warm = np.array([205.0, 196.0, 178.0], np.float32)
+        arr[:, x:x + 2] = arr[:, x:x + 2] * 0.55 + warm * 0.45 * 0.55
     return arr
 
 

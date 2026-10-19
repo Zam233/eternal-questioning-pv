@@ -45,12 +45,39 @@ def _act_of(note):
     return None
 
 
+def _tokens(s):
+    """按"每个汉字开一个新 token"切分，方括号里的空格/注解不切。
+
+    '虚×0.62↓12[透明度 0.55]　华×0.58' -> ['虚×0.62↓12[透明度 0.55]', '华×0.58']
+    """
+    out, cur, depth = [], [], 0
+    for ch in s:
+        if ch in "[（(【":
+            depth += 1
+        elif ch in "]）)】":
+            depth = max(0, depth - 1)
+        if depth == 0 and ch != "\u3000" and ("\u4e00" <= ch <= "\u9fff"):
+            if cur:
+                out.append("".join(cur))
+            cur = [ch]
+        elif depth == 0 and ch in "\u3000 \t\r\n":
+            if cur:
+                out.append("".join(cur))
+                cur = []
+        else:
+            if cur:
+                cur.append(ch)
+    if cur:
+        out.append("".join(cur))
+    return [t for t in out if t]
+
+
 def parse_glyphs(s):
     """'毒×2.6↑0[砸]　鸩×1.1↓8' -> [dict, dict]"""
     out = []
     if not s:
         return out
-    for tok in re.split(r"[\s\u3000]+", s.strip()):
+    for tok in _tokens(s.strip()):
         if not tok:
             continue
         m = re.match(r"^([^\s×↑↓（(\[]+)", tok)

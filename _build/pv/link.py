@@ -156,10 +156,10 @@ def link_frame(shots, b, t, L):
     A = _render(a, t)
     B = _render(b, t)
 
-    # ---- 移焦分量：两侧各自虚掉，交界也一起软掉
+    # ---- 移焦分量：出画侧虚掉，入画侧几乎不糊（新句第一个字必须一进来就读得清）
     if c["rack"] > 0.5:
         A = gauss(A, c["rack"] * k)
-        B = gauss(B, c["rack"] * (1.0 - k))
+        B = gauss(B, c["rack"] * 1.6 * (1.0 - k) * k)
 
     zoomed = (c["za"] > 1.005) or (c["zb"] > 1.005)
 

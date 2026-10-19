@@ -15,15 +15,16 @@ from . import typefx as X
 # ------------------------------------------------------------------ anchors
 LAYOUTS = {
     "center":    dict(x=0.500, y=0.440, s=1.00, align="c"),
-    "low_center": dict(x=0.500, y=0.735, s=0.85, align="c"),
-    "up_center": dict(x=0.500, y=0.235, s=0.85, align="c"),
-    "low_left":  dict(x=0.300, y=0.715, s=0.60, align="l"),
-    "low_right": dict(x=0.700, y=0.705, s=0.58, align="r"),
-    "up_right":  dict(x=0.700, y=0.265, s=0.52, align="r"),
-    "up_left":   dict(x=0.300, y=0.275, s=0.54, align="l"),
-    "right_v":   dict(x=0.870, y=0.340, s=0.62, align="c"),
+    "low_center": dict(x=0.500, y=0.738, s=0.85, align="c"),
+    "up_center": dict(x=0.500, y=0.238, s=0.85, align="c"),
+    "low_left":  dict(x=0.200, y=0.720, s=0.60, align="l"),
+    "low_right": dict(x=0.800, y=0.712, s=0.58, align="r"),
+    "up_right":  dict(x=0.800, y=0.268, s=0.52, align="r"),
+    "up_left":   dict(x=0.200, y=0.272, s=0.54, align="l"),
+    "right_v":   dict(x=0.880, y=0.340, s=0.62, align="c"),
+    "right_v2":  dict(x=0.800, y=0.340, s=0.62, align="c"),
     "left_v":    dict(x=0.120, y=0.340, s=0.58, align="c"),
-    "far_left":  dict(x=0.180, y=0.470, s=0.52, align="l"),
+    "far_left":  dict(x=0.170, y=0.470, s=0.52, align="l"),
     "far_right": dict(x=0.830, y=0.470, s=0.52, align="r"),
     "top_left":  dict(x=0.130, y=0.165, s=0.42, align="l"),
     "bottom_right": dict(x=0.880, y=0.860, s=0.40, align="r"),
@@ -223,7 +224,11 @@ def _chars(img, cue, t, kind):
         px = cue.get("px") or fit_px(n, cue.get("layout", "center"))
     # R3: minimum legible size for anything that is read as a lyric
     if kind not in ("bleed", "quiet", "dossier", "note", "watermark") and not cue.get("bleed"):
-        px = max(px, 84)
+        floor = 128 if n <= 5 else (116 if n <= 8 else 104)
+        px = max(px, floor)
+    # 极限散开的句子：字距越大，字本身越不能小，否则读作噪点
+    if float(cue.get("track_em") or 0.0) >= 1.2:
+        px = max(px, 132)
     color = cue.get("color") or C.CHALK
     track = cue.get("tracking", 0.02)
     glow = cue.get("glow", 0.5)
@@ -286,32 +291,7 @@ def _chars(img, cue, t, kind):
     cy += float(cue.get("_cam_dy", 0.0) or 0.0) * C.H
 
     # ---------------- readability R1 / R2 / R4 / R7
-    if cue.get("auto_color", True) and not cue.get("color"):
-        H, W = img.shape[:2]
-        bx0 = int(np.clip(cx - total / 2, 0, W - 1))
-        bx1 = int(np.clip(cx + total / 2, 1, W))
-        by0 = int(np.clip(cy - px * 0.72, 0, H - 1))
-        by1 = int(np.clip(cy + px * 0.72, 1, H))
-        if bx1 > bx0 and by1 > by0:
-            sub = img[by0:by1, bx0:bx1]
-            bl = float(sub.mean()) / 255.0
-            mc = sub.reshape(-1, 3).mean(axis=0)
-            hue = mc / max(1.0, float(mc.max()))
-            if bl > 0.55:
-                # dark type, still tinted by the plate it sits on
-                color = tuple(int(np.clip(hue[i] * 60 + 22, 12, 96)) for i in range(3))
-            else:
-                # light type as the pale version of this plate's own colour
-                color = tuple(int(np.clip(hue[i] * 108 + 132, 120, 248)) for i in range(3))
-                if bl > 0.26:
-                    _band_scrim(img, cx, cy, total * 1.05, px * 1.9, 0.32)
-            chars = X.char_sprites(text, px, color=color, weight="Black",
-                                   tracking=track, glow=glow)
-            steps = [max(adv, sp.w) for sp, adv in chars]
-            total = sum(steps)
-            if justify:
-                steps = [band_w / n] * n
-                total = band_w
+    # 取色放在最终位置算完之后：先夹再取色，才不会被"取色点还在旧位置"坑到（暗底压深字）
     shadow_dx = max(2, int(px * 0.030))
     shadow_dy = max(3, int(px * 0.035))
     shadow_blur = max(0.6, px * 0.012)
@@ -319,7 +299,9 @@ def _chars(img, cue, t, kind):
     x = cx - total / 2
     n = len(chars)
     # ---- 逐字规格（来自文字分镜表）：一字一项，不给就均排
-    gs = cue.get("glyph") or []
+    # 注意：要复制一份再用，_chars 里会对 s 做临时缩放；直接改 cue["glyph"] 会在
+    # 逐帧渲染时被反复乘，字会越渲越小直到消失（线程里更糟）。
+    gs = [dict(g) for g in (cue.get("glyph") or [])]
     tr_em = cue.get("track_em")
     tr_em_none = tr_em is None
     segs = cue.get("segs") or []
@@ -328,9 +310,11 @@ def _chars(img, cue, t, kind):
         for sg in segs:
             k = int(sg.get("idx", 0))
             side = -1.0 if k == 0 else 1.0
-            seg_off[int(sg.get("start", 0))] = (
-                side * 0.105 * C.W,
-                (0.055 if k == 0 else -0.055) * C.H)
+            off = (side * 0.105 * C.W, (0.055 if k == 0 else -0.055) * C.H)
+            st = int(sg.get("start", 0))
+            en = st + int(sg.get("n", 0))
+            for ii in range(st, max(st + 1, en)):
+                seg_off[ii] = off
     slope = float(cue.get("slope", 0.0))
     tanp = float(np.tan(np.radians(slope))) if abs(slope) > 0.01 else 0.0
     drift = float(cue.get("drift", 0.0))
@@ -352,6 +336,55 @@ def _chars(img, cue, t, kind):
         steps = [stp_u] * n
         total = stp_u * n
         x = cx - total / 2
+
+    # ---- 放大字单独留位 + 整块夹进安全区：字不许出画，放大字不许叠到邻居身上
+    allow_clamp = not (kind == "bleed" or cue.get("bleed") or drift)
+    if allow_clamp:
+        for i, (sp, adv) in enumerate(chars):
+            s_i = float(gs[i].get("s", 1.0)) if i < len(gs) else 1.0
+            need = sp.w * s_i + px * 0.06
+            if need > steps[i]:
+                steps[i] = need
+        total = sum(steps)
+        usable_w = C.W - 2 * C.SAFE - 12
+        if total > usable_w:
+            kk = usable_w / float(max(1.0, total))
+            steps = [v * kk for v in steps]
+            total = usable_w
+            # 散开句只收字距、不收字（否则字会被压成噪点）
+            if tr_em is None:
+                for i in range(len(gs)):
+                    gs[i]["s"] = float(gs[i].get("s", 1.0)) * kk
+        if L["align"] == "l":
+            x0 = L["x"] * C.W
+        elif L["align"] == "r":
+            x0 = L["x"] * C.W - total
+        else:
+            x0 = L["x"] * C.W - total / 2.0
+        x0 = min(max(x0, C.SAFE + 4), C.W - C.SAFE - 4 - total)
+        cx = x0 + total / 2.0
+        x = x0
+    else:
+        x = cx - total / 2.0
+
+    # 取色 + 局部压暗：在最终字块位置上取样（否则会拿到旧位置的光度，暗底压深字）
+    if cue.get("auto_color", True) and not cue.get("color"):
+        bx0 = int(np.clip(x, 0, C.W - 1))
+        bx1 = int(np.clip(x + total, 1, C.W))
+        by0 = int(np.clip(cy - px * 0.62, 0, C.H - 1))
+        by1 = int(np.clip(cy + px * 0.62, 1, C.H))
+        if bx1 > bx0 and by1 > by0:
+            sub = img[by0:by1, bx0:bx1]
+            bl = float(sub.mean()) / 255.0
+            mc = sub.reshape(-1, 3).mean(axis=0)
+            hue = mc / max(1.0, float(mc.max()))
+            if bl > 0.58:
+                color = tuple(int(np.clip(hue[i] * 60 + 22, 12, 96)) for i in range(3))
+            else:
+                color = tuple(int(np.clip(hue[i] * 108 + 132, 120, 248)) for i in range(3))
+            chars = X.char_sprites(text, px, color=color, weight="Black",
+                                   tracking=track, glow=glow)
+
     for i, (sp, adv) in enumerate(chars):
         stp = steps[i]
         on = float(words[i]["t0"]) if i < len(words) else t0 + i * 0.06
@@ -469,6 +502,22 @@ def _chars(img, cue, t, kind):
         a *= amul
         if kind == "squash":
             pass
+        # 单个字也不许出画：按缩放后的字框夹进安全区（放大字贴边时先把字号压下来）
+        if allow_clamp:
+            halfw = sp.w * abs(s) * 0.5
+            halfh = sp.h * abs(s) * 0.5
+            if halfw * 2.0 > C.W - 2 * C.SAFE:
+                s = max(0.2, (C.W - 2 * C.SAFE - 8) / float(max(1, sp.w)))
+                halfw = sp.w * s * 0.5
+            if halfh * 2.0 > C.H - 2 * C.SAFE:
+                s = max(0.2, (C.H - 2 * C.SAFE - 8) / float(max(1, sp.h)))
+                halfh = sp.h * s * 0.5
+            gx0 = x + stp / 2 + dx
+            gy0 = cy + dy
+            gx0 = min(max(gx0, C.SAFE + halfw), C.W - C.SAFE - halfw)
+            gy0 = min(max(gy0, C.SAFE + halfh), C.H - C.SAFE - halfh)
+            dx = gx0 - (x + stp / 2)
+            dy = gy0 - cy
         sc = (s, s * (0.38 if kind == "squash" else 1.0))
         if a > 0.004:
             X.put_shadow(img, sp, x + stp / 2 + dx, cy + dy, scale=sc[1] if kind == "squash" else s,

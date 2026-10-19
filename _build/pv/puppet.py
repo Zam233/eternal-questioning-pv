@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """Layered puppet compositor driven by one physical camera (see camera.py).
 
 Draw order is fixed and non-negotiable:
@@ -83,7 +83,43 @@ def grade_frame(img, g):
     return img
 
 
-def _draw_bg(img, L, cam, st, u):
+def _persp(im, yaw, pitch):
+    """把平面按 yaw/pitch 做透视变形——参考片里石碑/书页的"转"，用真透视而不是拉伸。"""
+    if abs(yaw) < 0.5 and abs(pitch) < 0.5:
+        return im
+    try:
+        import cv2
+        import numpy as np
+        w, h = im.size
+        f = np.tan(np.radians(max(-40.0, min(40.0, yaw)))) * 0.7
+        g = np.tan(np.radians(max(-40.0, min(40.0, pitch)))) * 0.7
+        sl, sr = 1.0 + f, 1.0 - f
+        st, sb = 1.0 + g, 1.0 - g
+        src = np.float32([[0, 0], [w, 0], [w, h], [0, h]])
+        dst = np.float32([
+            [w * (1 - sl) / 2.0, h * (1 - st) / 2.0],
+            [w * (1 + sr) / 2.0, h * (1 - st) / 2.0],
+            [w * (1 + sr) / 2.0, h * (1 + sb) / 2.0],
+            [w * (1 - sl) / 2.0, h * (1 + sb) / 2.0],
+        ])
+        M = cv2.getPerspectiveTransform(src, dst)
+        arr = cv2.warpPerspective(np.asarray(im), M, (w, h), flags=cv2.INTER_LINEAR,
+                                  borderValue=(0, 0, 0, 0))
+        return Image.fromarray(arr)
+    except Exception:
+        return im
+
+
+def _lerp(L, u, key, default):
+    """层内关键帧：x -> x1 / h -> h1 / tilt -> tilt1，u 走 ease。"""
+    a = float(L.get(key, default))
+    b = float(L.get(key + "1", a))
+    if abs(b - a) < 1e-9:
+        return a
+    return a + (b - a) * T.ease_io(u)
+
+
+def _draw_bg(img, L, cam, st, u, t):
     s, ox, oy, roll = CAM.layer_xform(st, L.get("z", 1.0))
     from . import scene as S
     im = S.plate_variant(L.get("src", "ruins"), int(L.get("idx", 0)),
@@ -93,7 +129,10 @@ def _draw_bg(img, L, cam, st, u):
     win = S.window(im, cx, cy, s * float(L.get("fit", 1.0)), roll)
     br = max(float(L.get("blur", 0.0)), cam.blur_for(st, L.get("z", 1.0)))
     win = _blur(win, br)
+    win = win * _lerp(L, u, "exp", 1.0)
     a = float(L.get("alpha", 1.0))
+    if L.get("tin") is not None:
+        a *= _develop(L, t)[0]
     if a >= 0.999:
         np.copyto(img, win)
     else:
@@ -113,7 +152,12 @@ def _develop(L, t):
     return float(a), float(blur)
 
 
-def _draw_figure(img, L, cam, st, t):
+def _u_spec(L, t):
+    t0 = float(L.get("_shot_t0", 0.0)); t1 = float(L.get("_shot_t1", t0 + 1.0))
+    return float(np.clip((t - t0) / max(1e-3, t1 - t0), 0, 1))
+
+
+def _draw_figure(img, L, cam, st, t, u):
     """A person plate: develops in, can sit IN FRONT of the type and cover it."""
     im = prop(L.get("src", ""), max_side=1200) or prop(L.get("src", ""))
     if im is None:
@@ -125,18 +169,20 @@ def _draw_figure(img, L, cam, st, t):
         return
     Z = L.get("z", 0.40)
     s, ox, oy, roll = CAM.layer_xform(st, Z)
-    h = float(L.get("h", 0.75)) * C.H * s
+    h = _lerp(L, u, "h", 0.75) * C.H * s
     if L.get("flip"):
         im = im.transpose(Image.FLIP_LEFT_RIGHT)
     nw = max(2, int(h * im.width / max(1, im.height)))
     nh = max(2, int(h))
     rs = im.resize((nw, nh), Image.LANCZOS)
+    rs = _persp(rs, _lerp(L, u, "yaw", 0.0), _lerp(L, u, "pitch", 0.0))
     arr = np.asarray(rs).astype(np.float32)
     rgb, a = arr[:, :, :3], arr[:, :, 3] / 255.0
     if not L.get("raw_colour"):
         rgb = _tone(rgb, L.get("palette", "sepia"))
     if blur > 0.3:
         rgb = _blur(rgb, blur)
+    rgb = rgb * _lerp(L, u, "exp", 1.0)
     # integrate the plate into the scene: feathered torn edge + own shadow
     al = Image.fromarray((a * 255).astype(np.uint8)).filter(
         ImageFilter.GaussianBlur(max(1.2, min(nw, nh) * 0.008)))
@@ -151,8 +197,8 @@ def _draw_figure(img, L, cam, st, t):
                             .resize((nw, nh), Image.BICUBIC)).astype(np.float32) / 255.0
             _props[key] = nz
         a = a * (0.70 + 0.30 * nz)
-    px = (L.get("x", 0.5) + ox) * C.W
-    py = (L.get("y", 0.55) + oy) * C.H
+    px = (_lerp(L, u, "x", 0.5) + ox) * C.W
+    py = (_lerp(L, u, "y", 0.55) + oy) * C.H
     from .typefx import _blend
     # cast a shadow into the plate first, in the shot's light direction
     sx = int(px - nw / 2 + nw * 0.05)
@@ -233,23 +279,24 @@ def _draw_prop(img, L, cam, st, u):
         return
     Z = L.get("z", 0.4)
     s, ox, oy, roll = CAM.layer_xform(st, Z)
-    h = float(L.get("h", 0.7)) * C.H * s
+    h = _lerp(L, u, "h", 0.7) * C.H * s
     w = h * im.width / max(1, im.height)
     if L.get("flip"):
         im = im.transpose(Image.FLIP_LEFT_RIGHT)
     nw, nh = max(2, int(w)), max(2, int(h))
     rs = im.resize((nw, nh), Image.LANCZOS)
-    ang = roll + float(L.get("tilt", 0.0))
+    ang = roll + _lerp(L, u, "tilt", 0.0)
     if abs(ang) > 0.15:
         rs = rs.rotate(ang, resample=Image.BICUBIC, expand=True)
     arr = np.asarray(rs).astype(np.float32)
     rgb, a = arr[:, :, :3], arr[:, :, 3] / 255.0
     if not L.get("raw_colour"):
         rgb = _tone(rgb, L.get("palette", "sepia"))
+    rgb = rgb * _lerp(L, u, "exp", 1.0)
     br = max(float(L.get("depth_blur", 0.0)), cam.blur_for(st, Z))
     rgb = _blur(rgb, br)
-    px = (L.get("x", 0.5) + ox) * C.W
-    py = (L.get("y", 0.62) + oy) * C.H
+    px = (_lerp(L, u, "x", 0.5) + ox) * C.W
+    py = (_lerp(L, u, "y", 0.62) + oy) * C.H
     from .typefx import _blend
     al = a * float(L.get("alpha", 1.0))
     if L.get("blend") == "multiply":
@@ -283,11 +330,50 @@ def _draw_type(img, L, cam, st, t):
     want = base * s
     limit = (C.W - 2 * C.SAFE - 60) / n
     cue["px"] = int(min(want, limit))
-    cue["_cam_dx"] = ox
-    cue["_cam_dy"] = oy
-    if abs(roll) > 0.2:
-        cue["rot"] = float(cue.get("rot", 0.0)) + roll
+    # 字锁屏：文字不跟相机走，镜头去动画面。换句时字换位置靠 layout，不靠机位。
+    cue["_cam_dx"] = 0.0
+    cue["_cam_dy"] = 0.0
     B.draw(img, cue, t)
+
+
+def _cue_box(c):
+    """粗估字块屏幕框（用于判断前景层会不会把字整块吃掉）。"""
+    from . import block as B
+    L = B.layout(c.get("layout", "center"))
+    n = max(1, len(c.get("text", "")))
+    band = float(c.get("band", 0.78)) * C.W
+    px = c.get("px") or max(96, (band / n) * 0.66)
+    if c.get("vertical"):
+        w, h = px * 1.3, px * 1.12 * n
+    else:
+        w, h = (band if c.get("band") else n * px * 1.05), px * 1.45
+    x = L["x"] * C.W
+    x0 = x if L["align"] == "l" else (x - w if L["align"] == "r" else x - w / 2)
+    y = L["y"] * C.H
+    return (x0 - 0.02 * C.W, y - h / 2, x0 + w + 0.02 * C.W, y + h / 2)
+
+
+def _front_box(L, st):
+    im = prop(L.get("src", ""))
+    if im is None:
+        return None
+    Z = float(L.get("z", 0.4))
+    s, ox, oy, roll = CAM.layer_xform(st, Z)
+    h = float(L.get("h", 0.7)) * C.H * s
+    w = h * im.width / max(1, im.height)
+    x = (float(L.get("x", 0.5)) + ox) * C.W
+    y = (float(L.get("y", 0.6)) + oy) * C.H
+    return (x - w / 2, y - h / 2, x + w / 2, y + h / 2)
+
+
+def _cover_ratio(a, b):
+    x0, y0 = max(a[0], b[0]), max(a[1], b[1])
+    x1, y1 = min(a[2], b[2]), min(a[3], b[3])
+    if x1 <= x0 or y1 <= y0:
+        return 0.0
+    inter = (x1 - x0) * (y1 - y0)
+    area = max(1.0, (b[2] - b[0]) * (b[3] - b[1]))
+    return inter / area
 
 
 # ---------------------------------------------------------------- compose
@@ -300,18 +386,28 @@ def compose(spec, t):
     for L in layers:
         L.setdefault("palette", pal_name)
 
+    text_boxes = [_cue_box(L["cue"]) for L in layers
+                  if L.get("t") == "type" and (L.get("cue") or {}).get("text")]
+    front = [L for L in layers if L.get("front")]
+    front_before, front_after = [], []
+    for L in front:
+        box = _front_box(L, st)
+        hide = box is not None and any(_cover_ratio(box, tb) > 0.15 for tb in text_boxes)
+        (front_before if hide else front_after).append(L)
+
     visual = [L for L in layers if L.get("t", "bg") in ("bg", "prop", "fx", "figure", "map", "texture")
               and not L.get("front")]
+    visual += front_before
     visual.sort(key=lambda L: -float(L.get("z", 1.0)))
     for L in visual:
         k = L.get("t", "bg")
         if k == "bg":
-            _draw_bg(img, L, cam, st, _u(spec, t))
+            _draw_bg(img, L, cam, st, _u(spec, t), t)
         elif k == "fx":
             from . import particles as FX
             FX.draw(img, L, cam, st, _u(spec, t))
         elif k == "figure":
-            _draw_figure(img, L, cam, st, t)
+            _draw_figure(img, L, cam, st, t, _u(spec, t))
         elif k == "map":
             L["_t"] = t
             _draw_map(img, L, cam, st, _u(spec, t))
@@ -329,12 +425,11 @@ def compose(spec, t):
             _draw_type(img, L, cam, st, t)
 
     # front layers: a narrow subject may sit over the type and take a character
-    front = [L for L in layers if L.get("front")]
-    front.sort(key=lambda L: -float(L.get("z", 0.3)))
-    for L in front:
+    front_after.sort(key=lambda L: -float(L.get("z", 0.3)))
+    for L in front_after:
         k = L.get("t", "prop")
         if k == "figure":
-            _draw_figure(img, L, cam, st, t)
+            _draw_figure(img, L, cam, st, t, _u(spec, t))
         elif k == "prop":
             _draw_prop(img, L, cam, st, _u(spec, t))
         elif k == "texture":
