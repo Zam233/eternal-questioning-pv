@@ -106,7 +106,6 @@ python -m pv.build frames --shots shots_v20.json --start 0 --end 6307 `
 - 字体：Noto Serif SC（SIL OFL 1.1）、Georgia（系统字体）
 - 音乐 / 歌词：Suno 生成，权利归作者，音频不入库
 - AI 人物层与封面底图：由 gpt-image 系列模型生成
-- **不含第三方版权素材**：早期误入库的 5 张网络抓图（一张 1953 年 3D 眼镜观众照的两种格式、一幅有水印的苏联油画、一幅马恩题材油画、一幅圆形监狱插图）与一张 Delacroix 版画外链图，已于 2026-10 从提交历史中彻底移除；`assets/` 整体不入库。
 
 ---
 
@@ -169,8 +168,6 @@ python -m pv.build frames --shots shots_v19.json --start 0 --end 6307 `
 ```
 
 Requirements: Python 3.12+, NumPy, Pillow, OpenCV, SciPy, ffmpeg (NVENC optional), cupy (optional).
-
-> **Assets are not in this repository.** `assets/` (Met public-domain plate downloads), `_build/assets/`, audio and renders are gitignored. To render, fetch the Met public-domain plates with `_build/fetch_met.mjs` and regenerate the AI portrait layers with `_build/gen.mjs` (it takes `IMG_BASE` / `IMG_KEY` from the environment; no endpoint is baked in). The only images kept in the repo are the two AI-generated cover backdrops (`_build/cover_art_*.png`); **no third-party copyrighted images are included** — five scrap images that slipped into the earliest commit were purged from history in 2026-10.
 
 ## Credits
 
