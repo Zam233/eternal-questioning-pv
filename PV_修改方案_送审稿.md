@@ -21,44 +21,6 @@
 | 3 | 时间轴对不上 | whisper 词级时间戳内部均分 | 逐字打点工具 + 校验脚本 | 1.5 天 |
 | 4 | 空镜署名 | — | 4 处署名位 + 片尾卡 | 0.2 天 |
 
----
-
-## 二、接口复测结果（路线二）
-
-**结论：不是模型问题，是中转站整机不可用，换模型无效。**
-
-```
-models: claude-fable-5, claude-sonnet-5, gemini-3.8-flash, gemini-4-argon,
-        gpt-5.6-sol, gpt-6-astra, gpt-6-sol,
-        gpt-image-2.5-flare, gpt-image-2.5-sunburst, gpt-image-2.5, gpt-image-2
-
-claude-fable-5           HTTP 503   system_disk_overloaded
-claude-sonnet-5          HTTP 503   system_disk_overloaded
-gemini-3.8-flash         HTTP 503   system_disk_overloaded
-gemini-4-argon           HTTP 503   system_disk_overloaded
-gpt-5.6-sol              HTTP 503   system_disk_overloaded
-gpt-6-astra              HTTP 503   system_disk_overloaded
-gpt-6-sol                HTTP 503   system_disk_overloaded
-gpt-image-2.5-flare      HTTP 503   system_disk_overloaded
-gpt-image-2.5-sunburst   HTTP 503   system_disk_overloaded
-gpt-image-2.5            HTTP 503   system_disk_overloaded
-gpt-image-2              HTTP 503   system_disk_overloaded
-```
-
-错误体为 `{"code":"system_disk_overloaded","message":"system disk overloaded (current: 96.7%, threshold: 95%)"}`。
-**11 个模型全部 503，连文本模型也 503** —— 说明是中转服务器磁盘打满（96.7% > 95% 阈值），与模型、参数、密钥无关。`GET /v1/models` 能返回，是因为那是静态路由。
-
-已经做了一件事：**挂了后台哨兵** `_build/api_watch.mjs`，每 3 分钟探一次（共 40 次 / 2 小时）。一旦恢复，它会自动生成一张探针图并写入 `_build/API_RECOVERED.txt`。
-
-**路线二的执行预案（接口一恢复即可跑）**：
-
-1. 用 `spec_philosophy.json` 生成 **24 张**主题图（每位哲学家/每个母题一张）；
-2. 统一走 `plate()` 的百分位归一 + 均值归一到 0.46 + 双色调，把 24 张不同来源的图压成同一套影调；
-3. 保留现有 Met 版画作为**第二素材层**（背景/前景/纹理），AI 图做主视觉。
-
-> 现状必须如实记录：**当前成片的素材是大都会博物馆 Open Access 公版版画 71 张**。署名写 `图片素材：GPT-Image 2.5` 只有在路线二跑通后才成立。
-
----
 
 ## 三、参考片的量化动效分析
 
