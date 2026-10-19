@@ -1,5 +1,6 @@
 // Probe the OpenAI-compatible image endpoint.
-const BASE = "https://api.tk1688.com/v1";
+const BASE = process.env.IMG_BASE || "";
+if (!BASE) { console.error("missing IMG_BASE"); process.exit(2); }
 const KEY = process.env.IMG_KEY || "";
 
 async function j(path, opts = {}) {

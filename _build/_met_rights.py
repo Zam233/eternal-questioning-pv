@@ -5,9 +5,10 @@ import os
 import subprocess
 import sys
 
-PROXY = "http://127.0.0.1:7897"
-os.environ.setdefault("HTTPS_PROXY", PROXY)
-os.environ.setdefault("HTTP_PROXY", PROXY)
+PROXY = os.environ.get("HTTPS_PROXY") or os.environ.get("HTTP_PROXY") or ""
+if PROXY:
+    os.environ.setdefault("HTTPS_PROXY", PROXY)
+    os.environ.setdefault("HTTP_PROXY", PROXY)
 
 ids = sorted({p.split('/')[-1].replace('.jpg', '')
               for p in subprocess.check_output(

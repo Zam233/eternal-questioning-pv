@@ -8,8 +8,10 @@ import sys
 
 import numpy as np
 from PIL import Image
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TMPROOT = os.environ.get("TMP", os.path.join(ROOT, "_tmp"))
 
-VID = r"K:\5A大作\过期童话.mp4"
+VID = os.path.join(ROOT, "过期童话.mp4")
 W, H = 64, 36
 
 
@@ -38,7 +40,7 @@ def main():
     V = V / (np.linalg.norm(V, axis=1, keepdims=True) + 1e-6)
     out = {}
     for name in ["fxa", "fxb", "fxc", "fxd", "fxe", "m76"]:
-        fs = sorted(glob.glob(rf"K:\5A大作\_ref\{name}\*.jpg"))
+        fs = sorted(glob.glob(os.path.join(ROOT, "_ref", {name}, "*.jpg")))
         picks = [fs[0], fs[len(fs) // 2], fs[-1]]
         hits = []
         for p in picks:
@@ -49,7 +51,7 @@ def main():
                          round(float(corr[idx]), 3)))
         out[name] = hits
         print(name, hits)
-    json.dump(out, open(r"K:\5A大作\_build\ref_match.json", "w", encoding="utf-8"),
+    json.dump(out, open(os.path.join(ROOT, "_build", "ref_match.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)
 
 

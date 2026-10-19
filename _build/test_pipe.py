@@ -1,5 +1,7 @@
 import os, subprocess, sys
-OUT = r"K:\5A大作\out"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TMPROOT = os.environ.get("TMP", os.path.join(ROOT, "_tmp"))
+OUT = os.path.join(ROOT, "out")
 os.makedirs(OUT, exist_ok=True)
 cmd = ["ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
        "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "320x180", "-r", "24",

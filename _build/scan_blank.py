@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 """Scan the rendered sample for empty bands: a blank strip left where two
 scenes meet shows up as a column/row block with almost no variance."""
-import json, io, os, subprocess, sys
+import json
+import os, io, subprocess, sys
 from PIL import Image
 import numpy as np
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TMPROOT = os.environ.get("TMP", os.path.join(ROOT, "_tmp"))
 
-SRC = r"K:\5A大作\out\v14_open8.mp4"
-TMP = r"K:\dsh_tmp\scan_blank"
+SRC = os.path.join(ROOT, "out", "v14_open8.mp4")
+TMP = os.path.join(TMPROOT, "scan_blank")
 os.makedirs(TMP, exist_ok=True)
-shots = json.load(io.open(r"K:\5A大作\_build\shots_v13.json", encoding="utf-8"))
+shots = json.load(io.open(os.path.join(ROOT, "_build", "shots_v13.json"), encoding="utf-8"))
 shots.sort(key=lambda s: s["t0"])
 
 wins = [(s["t0"], s["t0"] + (s.get("link") or {}).get("dur", 0), (s.get("link") or {}).get("out"))

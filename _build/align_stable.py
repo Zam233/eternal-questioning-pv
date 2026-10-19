@@ -11,9 +11,10 @@ import json, io, os, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 AUDIO = os.path.join(ROOT, "\u8ffd\u95ee\u4e00\u4e0b.mp3")
-MODELS = r"K:\dsh_models"
-LIB = r"K:\dsh_lib"
-TMP = r"K:\dsh_tmp"
+BASE = os.environ.get("PV_MODELS", os.path.join(ROOT, "_models"))
+MODELS = os.path.join(BASE, "dsh_models")
+LIB = os.path.join(BASE, "dsh_lib")
+TMP = os.environ.get("TMP", os.path.join(ROOT, "_tmp"))
 
 os.environ["TMP"] = TMP
 os.environ["TEMP"] = TMP

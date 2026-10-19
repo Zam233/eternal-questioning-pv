@@ -1,7 +1,12 @@
-﻿import subprocess, os
+import os
+import subprocess
+
 from PIL import Image
-SRC = r"K:\5A大作\过期童话.mp4"
-TMP = r"K:\dsh_tmp\refwind"
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TMPROOT = os.environ.get("TMP", os.path.join(ROOT, "_tmp"))
+SRC = os.path.join(ROOT, "过期童话.mp4")
+TMP = os.path.join(TMPROOT, "refwind")
 os.makedirs(TMP, exist_ok=True)
 WIN = {"A_0105_0108": (65.0, 68.0), "B_0109_0113": (69.0, 73.0),
        "C_0113_0116": (73.0, 76.0), "D_0133_0136": (93.0, 96.0),

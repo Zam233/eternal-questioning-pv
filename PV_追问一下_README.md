@@ -4,7 +4,7 @@
 
 一支用代码逐帧渲染的**图版书式**歌词 MV —— 每一帧都是歌曲时间 `t` 的纯函数，不用剪辑软件，没有手工关键帧。
 
-- 成片：`out/永恒追问_PV_1080p.mp4`（1920×1080 / 24fps / H.264 NVENC + AAC）
+- 成片：`out/永恒追问_PV_v20_1080p.mp4`（1920×1080 / 24fps / H.264 NVENC + AAC）
 - 歌曲：`追问一下.mp3`（Suno 生成，4:22.8）
 - 参考片：`过期童话.mp4`（逐帧拆解见下文第四节）
 - 画面素材：**大都会艺术博物馆 Open Access 公版版画 71 张**（Public Domain）
@@ -33,8 +33,8 @@ t  ──►  找到当前 SHOT（一段固定机位）──► 逐条 CUE 求�
 | 1. 取歌词 | `_build/diag.py` | `lyrics_raw.txt`（Suno 写在 mp3 的 `lyrics-eng` 标签里） |
 | 2. 对时间轴 | `_build/align.py` → `_build/align_lines.py` | `asr.json` → `lines.json`（**逐字**起止时间） |
 | 3. 收素材 | `_build/fetch_met.mjs` | `assets/met_full/<主题>/<id>.jpg` |
-| 4. 排版设计 | `_build/make_shots.py` | `shots.json`（46 个 SHOT / 143 条 CUE） |
-| 5. 渲染出片 | `python -m pv.build frames --shots shots.json` | `out/永恒追问_PV_1080p.mp4` |
+| 4. 排版设计 | `_build/make_shots.py` + `apply_textboard2.py` + `finalize_v19.py` + `realign_v20.py` | `shots_v20.json`（53 个 SHOT / 88 条 CUE） |
+| 5. 渲染出片 | `python -m pv.build frames --shots shots_v20.json` | `out/永恒追问_PV_v20_1080p.mp4` |
 
 ### 歌词对时
 
@@ -94,19 +94,19 @@ t  ──►  找到当前 SHOT（一段固定机位）──► 逐条 CUE 求�
 ## 五、重新渲染
 
 ```powershell
-cd "K:\5A大作\_build"
+cd _build
 
 # 抽静帧验片
-python -m pv.build stills --shots shots.json --times 26,64,152,200
+python -m pv.build stills --shots shots_v20.json --times 26,64,152,200
 
 # 全片（默认走 NVENC）
-python -m pv.build frames --shots shots.json --workers 6 --crf 20
+python -m pv.build frames --shots shots_v20.json --workers 10 --crf 17
 ```
 
 - **GPU**：RTX 4070 Ti，默认 `h264_nvenc -preset p5 -rc vbr -cq <crf>`。
   想回到 CPU 编码：`$env:PV_CODEC="x264"`。
 - **沙箱坑**：本机禁止命名管道，`multiprocessing.Pool` 会直接 `WinError 5`，
-  所以渲染走 `ThreadPoolExecutor` + 单进程写 ffmpeg 管道（6 线程约 8–9 fps，全片约 12 分钟）。
+  所以渲染走 `ThreadPoolExecutor` + 单进程写 ffmpeg 管道（10 线程约 3.2 fps，全片 6307 帧约 33 分钟）。
 
 ## 六、换歌只要改三处
 

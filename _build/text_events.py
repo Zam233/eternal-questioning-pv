@@ -5,12 +5,15 @@ For every frame: bright-ink mask area + bounding extents. Then, inside each shot
 (from motion/report.json), count discontinuities = moments where the text layer
 visibly changes (new line lands / old line clears).
 """
-import json, os, sys
+import json
+import os, sys
 import numpy as np
 import cv2
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TMPROOT = os.environ.get("TMP", os.path.join(ROOT, "_tmp"))
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SRC = r"K:\5A大作\过期童话.mp4"
+SRC = os.path.join(ROOT, "过期童话.mp4")
 rep = json.load(open(os.path.join(HERE, "motion", "report.json")))
 cuts = [0] + rep["cut_frames"] + [rep["frames"] - 1]
 

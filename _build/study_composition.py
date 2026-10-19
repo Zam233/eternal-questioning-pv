@@ -3,8 +3,10 @@
 import os, sys, json
 import numpy as np
 import cv2
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TMPROOT = os.environ.get("TMP", os.path.join(ROOT, "_tmp"))
 
-SRC = r"K:\5A大作\过期童话.mp4"
+SRC = os.path.join(ROOT, "过期童话.mp4")
 HERE = os.path.dirname(os.path.abspath(__file__))
 cap = cv2.VideoCapture(SRC)
 n = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))

@@ -2,11 +2,14 @@
 """看看被判空带的那些块到底有多"死"（含邻块对比）。"""
 import os
 import subprocess
+import sys
+
+OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "out")
 import numpy as np
 from PIL import Image
 
-SRC = r"K:\5A大作\out\永恒追问_PV_1080p.mp4"
-TMP = r"K:\dsh_tmp\diag_blank"
+SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.join(OUT, "永恒追问_PV_v20_1080p.mp4")
+TMP = os.path.join(os.environ.get("TMP", "."), "diag_blank")
 os.makedirs(TMP, exist_ok=True)
 CASES = [(56.88, 0, 8), (111.58, 1, 23), (111.75, 1, 23), (123.42, 0, 1)]
 

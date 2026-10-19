@@ -1,6 +1,7 @@
 // Watch the relay until it recovers, then save a probe image and drop a marker file.
 import fs from "node:fs";
-const BASE = "https://api.tk1688.com/v1";
+const BASE = process.env.IMG_BASE || "";
+if (!BASE) { console.error("missing IMG_BASE"); process.exit(2); }
 const KEY = process.env.IMG_KEY || "";
 const MARK = "_build/API_RECOVERED.txt";
 const LOG = "_build/api_watch.log";

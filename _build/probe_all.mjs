@@ -1,6 +1,7 @@
 // Probe every image-capable model, report per-model status; save the first one that works.
 import fs from "node:fs";
-const BASE = "https://api.tk1688.com/v1";
+const BASE = process.env.IMG_BASE || "";
+if (!BASE) { console.error("missing IMG_BASE"); process.exit(2); }
 const KEY = process.env.IMG_KEY || "";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

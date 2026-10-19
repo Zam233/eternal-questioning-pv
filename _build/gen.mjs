@@ -3,8 +3,9 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const BASE = process.env.IMG_BASE || "https://ai.tk1688.com/v1";
+const BASE = process.env.IMG_BASE || "";
 const KEY = process.env.IMG_KEY || "";
+if (!BASE) { console.error("missing IMG_BASE"); process.exit(2); }
 if (!KEY) { console.error("missing IMG_KEY"); process.exit(2); }
 
 const args = process.argv.slice(2);

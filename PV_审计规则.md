@@ -6,7 +6,7 @@
 >
 > 用法
 > ```powershell
-> cd "K:\5A大作\_build"
+> cd _build
 > python audit.py --shots shots_v15.json                     # 规则审计（秒级）
 > python audit.py --shots shots_v15.json --video ..\out\v14_open8.mp4 --scan
 >                                                            # 加抽帧扫空带（慢）

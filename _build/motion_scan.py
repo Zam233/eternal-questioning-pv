@@ -4,11 +4,14 @@
 Measures, per frame pair: cut detection, camera translation/rotation/scale via
 feature-based affine estimation, luminance/colour swing. Writes JSON + a text report.
 """
-import json, os, sys
+import json
+import os, sys
 import numpy as np
 import cv2
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TMPROOT = os.environ.get("TMP", os.path.join(ROOT, "_tmp"))
 
-SRC = sys.argv[1] if len(sys.argv) > 1 else r"K:\5A大作\过期童话.mp4"
+SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "过期童话.mp4")
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "motion")
 os.makedirs(OUT, exist_ok=True)
 

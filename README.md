@@ -95,6 +95,7 @@ python -m pv.build frames --shots shots_v20.json --start 0 --end 6307 `
 
 > **素材不在仓库里**：`assets/`（MET 公版版画下载）、`_build/assets/`、音频与成片都在 `.gitignore` 中。
 > 自行渲染需要先下载 MET 公版版画（`_build/fetch_met.mjs`），并用 `_build/gen.mjs` 重新生成 AI 人物层。
+> 生成脚本不内置任何服务地址：先设 `$env:IMG_BASE = "<OpenAI 兼容 endpoint>"` 与 `$env:IMG_KEY = "<key>"`，再跑 `node gen.mjs`。
 > 仓库内**不含任何第三方版权图片**：只留生成式 AI 出的两张封面底图（`_build/cover_art_*.png`）。
 
 ---
@@ -112,8 +113,8 @@ python -m pv.build frames --shots shots_v20.json --start 0 --end 6307 `
 ## 六、致谢
 
 - 参考项目：[**MisakaZentai/world-execute-me-dsh-pv**](https://github.com/MisakaZentai/world-execute-me-dsh-pv)
-- 成片发布：[[Bilibili · BV1HbJo6EEdG]([https://www.bilibili.com/video/BV1HbJo6EEdG/]
-- 参考片：[《过期童话》](https://www.bilibili.com/video/BV1xCai6aE9g/)
+- 成片发布：[Bilibili · BV1HbJo6EEdG](https://www.bilibili.com/video/BV1HbJo6EEdG/)
+- 视觉语法参考片：[《过期童话》· Bilibili BV1xCai6aE9g](https://www.bilibili.com/video/BV1xCai6aE9g/)
 
 ---
 
@@ -169,12 +170,13 @@ python -m pv.build frames --shots shots_v19.json --start 0 --end 6307 `
 
 Requirements: Python 3.12+, NumPy, Pillow, OpenCV, SciPy, ffmpeg (NVENC optional), cupy (optional).
 
-> **Assets are not in this repository.** `assets/` (Met public-domain plate downloads), `_build/assets/`, audio and renders are gitignored. To render, fetch the Met public-domain plates with `_build/fetch_met.mjs` and regenerate the AI portrait layers with `_build/gen.mjs`. The only images kept in the repo are the two AI-generated cover backdrops (`_build/cover_art_*.png`); **no third-party copyrighted images are included** — five scrap images that slipped into the earliest commit were purged from history in 2026-10.
+> **Assets are not in this repository.** `assets/` (Met public-domain plate downloads), `_build/assets/`, audio and renders are gitignored. To render, fetch the Met public-domain plates with `_build/fetch_met.mjs` and regenerate the AI portrait layers with `_build/gen.mjs` (it takes `IMG_BASE` / `IMG_KEY` from the environment; no endpoint is baked in). The only images kept in the repo are the two AI-generated cover backdrops (`_build/cover_art_*.png`); **no third-party copyrighted images are included** — five scrap images that slipped into the earliest commit were purged from history in 2026-10.
 
 ## Credits
 
 - Reference project: [**MisakaZentai/world-execute-me-dsh-pv**](https://github.com/MisakaZentai/world-execute-me-dsh-pv)
-- Release: [Bilibili · BV1xCai6aE9g](https://www.bilibili.com/video/BV1xCai6aE9g/)
+- Release: [Bilibili · BV1HbJo6EEdG](https://www.bilibili.com/video/BV1HbJo6EEdG/)
+- Visual-grammar reference PV: [过期童话 · Bilibili BV1xCai6aE9g](https://www.bilibili.com/video/BV1xCai6aE9g/)
 - Plates: The Met Open Access (public domain); Font: Noto Serif SC (OFL); Music/lyrics: Suno; AI layers: gpt-image
 
 ## License
