@@ -5315,15 +5315,16 @@
     "seed": 5
    },
    {
-    "t": "prop",
-    "src": "flag_red",
-    "z": 0.34,
-    "x": 0.845,
-    "y": 0.4,
-    "h": 0.64,
-    "tilt": -7,
-    "raw_colour": true,
-    "alpha": 0.92
+    "t": "figure",
+    "src": "flag_red_soft",
+    "z": 0.36,
+    "x": 0.885,
+    "y": 0.38,
+    "h": 0.6,
+    "alpha": 0.86,
+    "seed": 31,
+    "tilt": -9,
+    "raw_colour": true
    },
    {
     "t": "type",
@@ -5545,16 +5546,17 @@
     "seed": 5
    },
    {
-    "t": "prop",
-    "src": "flag_red",
-    "z": 0.34,
-    "x": 0.155,
-    "y": 0.4,
-    "h": 0.58,
-    "tilt": 8,
+    "t": "figure",
+    "src": "flag_red_soft",
+    "z": 0.36,
+    "x": 0.115,
+    "y": 0.38,
+    "h": 0.54,
+    "alpha": 0.84,
+    "seed": 32,
+    "tilt": 10,
     "flip": true,
-    "raw_colour": true,
-    "alpha": 0.9
+    "raw_colour": true
    },
    {
     "t": "type",
