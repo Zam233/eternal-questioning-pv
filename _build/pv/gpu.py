@@ -1,15 +1,34 @@
 # -*- coding: utf-8 -*-
 """GPU bootstrap + accelerated post-processing chain.
 
-CuPy lives at K:\\dsh_gpu (ASCII path — NVRTC cannot open paths containing the
-CJK characters in K:\\5A大作), and every scratch file goes to K:\\dsh_tmp.
+CuPy and the CUDA toolkit may live outside the repo (NVRTC refuses paths that
+contain CJK characters), so the three roots below are resolved in this order:
+
+    environment variable  PV_GPU_ROOT / PV_CUDA_ROOT / PV_TMP
+    per-machine module    pv/_local_paths.py  (gitignored)
+    repo-relative default _gpu / _tmp
+
+Nothing machine-specific is committed.
 """
 import os
 import sys
 
-GPU_ROOT = r"K:\dsh_gpu"
-CUDA_ROOT = os.path.join(GPU_ROOT, "cuda_root")
-TMP_ROOT = r"K:\dsh_tmp"
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_REPO = os.path.dirname(os.path.dirname(_HERE))
+
+try:                                   # per-machine overrides, never committed
+    from . import _local_paths as _lp
+except Exception:                      # pragma: no cover
+    _lp = None
+
+
+def _root(env, attr, default):
+    return os.environ.get(env) or getattr(_lp, attr, default)
+
+
+GPU_ROOT = _root("PV_GPU_ROOT", "GPU_ROOT", os.path.join(_REPO, "_gpu"))
+CUDA_ROOT = _root("PV_CUDA_ROOT", "CUDA_ROOT", os.path.join(GPU_ROOT, "cuda_root"))
+TMP_ROOT = _root("PV_TMP", "TMP_ROOT", os.path.join(_REPO, "_tmp"))
 
 _cp = None
 _ready = None
