@@ -112,7 +112,7 @@ python -m pv.build frames --shots shots_v20.json --start 0 --end 6307 `
 ## 六、致谢
 
 - 参考项目：[**MisakaZentai/world-execute-me-dsh-pv**](https://github.com/MisakaZentai/world-execute-me-dsh-pv)
-- 成片发布：[Bilibili · BV1xCai6aE9g](https://www.bilibili.com/video/BV1xCai6aE9g/)
+- 成片发布：[[Bilibili · BV1HbJo6EEdG]([https://www.bilibili.com/video/BV1HbJo6EEdG/]
 - 参考片：[《过期童话》](https://www.bilibili.com/video/BV1xCai6aE9g/)
 
 ---
