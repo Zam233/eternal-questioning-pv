@@ -1,0 +1,74 @@
+ 1|PLATE 01|  19.22-  21.30|有人用理念构筑|band|center
+ 2|PLATE 01|  20.80-  23.21|名为本体的神话|band|center
+ 3|PLATE 02|  22.98-  25.34|逻各斯随波流转|band|center
+ 4|PLATE 02|  24.84-  27.20|直至阿卡德米亚|band|center
+ 5|PLATE 03|  26.88-  29.36|洞穴里有人囚禁|band|center
+ 6|PLATE 03|  28.90-  31.34|有人指认出虚华|band|center
+ 7|PLATE 04|  31.22-  33.28|也有人饮下毒鸩|band|center
+ 8|PLATE 04|  32.78-  35.41|将死生从容作答|band|center
+ 9|PLATE 05|  35.28-  37.42|神谕中有座天城|line|up_center
+10|PLATE 05|  36.96-  39.27|托名唤作耶和华|band|center
+11|PLATE 06|  38.96-  41.36|有位手持信理的|band|center
+12|PLATE 06|  40.86-  43.24|托马斯意气风发|band|center
+13|PLATE 07|  43.00-  45.38|唯名与唯实交锋|collide|center
+14|PLATE 07|  44.88-  47.16|将思辨翻覆揉轧|shuffle|center
+15|PLATE 08|  46.84-  49.50|辩驳里有谁将信仰|line|right_v
+16|PLATE 08|  49.00-  52.02|用理性来传达|band|center
+17|PLATE 09|  51.82-  55.36|神座在蒙昧后|band|center
+18|PLATE 09|  55.06-  57.10|渐渐崩塌|band|center
+19|PLATE 10|  56.88-  60.12|怀疑将虚妄的幻象|band|center
+20|PLATE 10|  59.70-  61.08|拆下|cut|center
+21|PLATE 11|  60.84-  63.40|机械的眼把万物|band|center
+22|PLATE 11|  62.90-  65.00|剖析再刻画|band|center
+23|PLATE 12|  64.80-  67.58|勾勒出泛神实体|band|center
+24|PLATE 12|  67.24-  70.94|惹世人皆惊诧|band|center
+25|PLATE 13|  73.10-  75.12|于是有人用白板|band|center
+26|PLATE 13|  74.62-  76.92|记录属于知的萌芽|band|center
+27|PLATE 14|  76.64-  79.02|有人把怀疑探遍|band|center
+28|PLATE 14|  78.52-  80.86|只为勘破因果的虚假|band|center
+29|PLATE 15|  80.54-  82.92|批判在沉睡后绝醒|band|center
+30|PLATE 15|  82.42-  84.81|立定先验伴时空刻划|band|center
+31|PLATE 16|  84.48-  86.64|在普遍理性中通向|band|center
+32|PLATE 16|  86.14-  90.50|那名为绝对精神的终点啊|band|center
+33|PLATE 18| 108.78- 110.78|绝对唯心的体系|band|center
+34|PLATE 18| 110.38- 112.22|耸立在金字塔|band|center
+35|PLATE 19| 112.02- 114.42|暗藏着自我异化|band|center
+36|PLATE 19| 113.92- 115.97|扬弃重构的代码|band|center
+37|PLATE 20| 115.68- 118.04|批判宗教的先驱|strike|center
+38|PLATE 20| 117.54- 119.88|将迷雾荡涤振刷|band|center
+39|PLATE 21| 119.60- 122.12|写下实践的新章|band|center
+40|PLATE 21| 121.62- 123.67|待批判者再出发|band|center
+41|PLATE 22| 123.34- 125.56|是谁说盲目意志|band|center
+42|PLATE 22| 125.06- 127.41|皆系于欲望惩罚|band|center
+43|PLATE 23| 127.16- 129.68|又是谁宣布上帝已死|band|center
+44|PLATE 23| 129.18- 131.38|高歌超人的神话|band|center
+45|PLATE 24| 131.14- 133.62|工业与商品拜物|band|center
+46|PLATE 24| 133.12- 135.44|将一切分割物化|band|center
+47|PLATE 25| 135.14- 138.00|此在世界随生存的时间|band|center
+48|PLATE 25| 137.60- 139.68|切分后升华|band|center
+49|PLATE 26| 144.66- 152.56|逻辑厘清着世界的图画|band|center
+50|PLATE 27| 152.36- 160.38|也守望沉默无言的断崖|band|center
+51|PLATE 28| 160.18- 168.28|直面事物本身在现象里发芽|band|center
+52|PLATE 29| 168.08- 175.97|凡不可说的当保持沉默|line|up_center
+53|PLATE 30| 175.82- 179.02|有人说那微观权力|band|center
+54|PLATE 30| 178.54- 180.81|潜藏在规训的种种技法|band|center
+55|PLATE 31| 180.48- 183.04|也有人批判技术理性|band|center
+56|PLATE 32| 182.70- 184.76|异化下的单向度化|band|center
+57|PLATE 33| 184.46- 186.66|形而上崇高的大厦|band|center
+58|PLATE 33| 186.16- 188.72|随逻辑颠覆重构再崩塌|band|center
+59|PLATE 34| 188.38- 191.84|惟有直面荒谬决意自决的你我|band|center
+60|PLATE 34| 191.34- 194.64|从不被虚无压垮|band|center
+61|PLATE 35| 196.76- 198.44|哲学从不是什么|band|center
+62|PLATE 35| 198.14- 200.63|远离于尘世悬空的童话|band|center
+63|PLATE 36| 200.36- 202.54|无论何时总有人|band|center
+64|PLATE 36| 202.08- 204.53|燃尽自我追索几缕光华|band|center
+65|PLATE 37| 204.20- 206.68|思想的微芒指引着|band|center
+66|PLATE 37| 206.18- 208.50|永恒追问本质的步伐|band|center
+67|PLATE 38| 208.20- 210.36|化作公理守护着|band|center
+68|PLATE 38| 209.86- 214.18|反思着生命无数平凡的人啊|band|center
+69|PLATE 39| 218.06- 221.76|那是直面未知|band|center
+70|PLATE 39| 222.50- 224.50|向死而生|stamp|center
+71|PLATE 40| 224.34- 229.65|自由自觉的坚韧灵魂啊|band|center
+72|PLATE 41| 229.44- 231.88|你看啊|band|center
+73|PLATE 42| 236.56- 240.20|真理之光终会抵达|band|center
+74|PLATE 42| 240.86- 244.63|请务必再追问一下|band|center
