@@ -59,11 +59,13 @@ t ──► 找到当前 SHOT（一段机位）──► 逐条 CUE 求值 ─�
 ```
 _build/pv/            渲染引擎
 _build/*.py           对齐、排版、合成、审计
-_build/shots_v19.json 全片数据（机位/文字/图层/后期）
+_build/shots_v20.json 全片数据（当前定稿：v19 + 3:37–4:05 声画重排）
+_build/shots_v19.json 上一版全片数据（保留以便对比）
 PV_分镜表_v19.md      定稿分镜
 PV_文字分镜表.md      逐字排版设计
 PV_参考片逐帧研究.md  参考片六场逐帧研究
 PV_审计规则.md        规则条文
+PV_v20_对齐修正.md    v20 声画对齐的偏差表与验证记录
 ```
 
 ---
@@ -76,31 +78,34 @@ cd _build
 # 1) 生成全片数据
 python apply_textboard2.py
 python finalize_v19.py
+python realign_v20.py          # v20：3:37–4:05 六句按逐字时间戳重排 → shots_v20.json
 
 # 2) 审计（0 FAIL 才渲）
-python audit.py --shots shots_v19.json
+python audit.py --shots shots_v20.json
 
 # 3) 抽静帧看构图 / 字号
-python -m pv.build stills --shots shots_v19.json --times 20,90,158,250
+python -m pv.build stills --shots shots_v20.json --times 20,90,158,250
 
 # 4) 全片（NVENC；GPU 后期会自动启用）
-python -m pv.build frames --shots shots_v19.json --start 0 --end 6307 `
+python -m pv.build frames --shots shots_v20.json --start 0 --end 6307 `
   --out ../out/eternal_questioning_1080p.mp4 --workers 8 --crf 20
 ```
 
 依赖：Python 3.12+、NumPy、Pillow、OpenCV、SciPy、ffmpeg（NVENC 可选）、cupy（可选，GPU 后期）。
 
-> **素材不在仓库里**：`_build/assets/`、`assets/met_full/`、音频与成片都在 `.gitignore` 中。
-> 自行渲染需要先下载 MET 公版版画，并用 `_build/gen.mjs` 重新生成 AI 人物层。
+> **素材不在仓库里**：`assets/`（MET 公版版画下载）、`_build/assets/`、音频与成片都在 `.gitignore` 中。
+> 自行渲染需要先下载 MET 公版版画（`_build/fetch_met.mjs`），并用 `_build/gen.mjs` 重新生成 AI 人物层。
+> 仓库内**不含任何第三方版权图片**：只留生成式 AI 出的两张封面底图（`_build/cover_art_*.png`）。
 
 ---
 
 ## 五、素材与许可
 
-- 版画：The Metropolitan Museum of Art Open Access（Public Domain）
+- 版画：The Metropolitan Museum of Art Open Access（CC0 / Public Domain），渲染时按需下载，不入库
 - 字体：Noto Serif SC（SIL OFL 1.1）、Georgia（系统字体）
-- 音乐 / 歌词：Suno 生成，权利归作者
-- AI 人物层：由 gpt-image 系列模型生成
+- 音乐 / 歌词：Suno 生成，权利归作者，音频不入库
+- AI 人物层与封面底图：由 gpt-image 系列模型生成
+- **不含第三方版权素材**：早期误入库的 5 张网络抓图（一张 1953 年 3D 眼镜观众照的两种格式、一幅有水印的苏联油画、一幅马恩题材油画、一幅圆形监狱插图）与一张 Delacroix 版画外链图，已于 2026-10 从提交历史中彻底移除；`assets/` 整体不入库。
 
 ---
 
@@ -164,7 +169,7 @@ python -m pv.build frames --shots shots_v19.json --start 0 --end 6307 `
 
 Requirements: Python 3.12+, NumPy, Pillow, OpenCV, SciPy, ffmpeg (NVENC optional), cupy (optional).
 
-> **Assets are not in this repository.** `_build/assets/`, `assets/met_full/`, audio and renders are gitignored. To render, fetch the Met public-domain plates and regenerate the AI portrait layers with `_build/gen.mjs`.
+> **Assets are not in this repository.** `assets/` (Met public-domain plate downloads), `_build/assets/`, audio and renders are gitignored. To render, fetch the Met public-domain plates with `_build/fetch_met.mjs` and regenerate the AI portrait layers with `_build/gen.mjs`. The only images kept in the repo are the two AI-generated cover backdrops (`_build/cover_art_*.png`); **no third-party copyrighted images are included** — five scrap images that slipped into the earliest commit were purged from history in 2026-10.
 
 ## Credits
 

@@ -37,3 +37,14 @@ _build/shots_*preview*.json
 _build/_audio_mono.wav
 _build/_rows.txt
 .dsh-vision-toolkit/
+
+# 素材：MET 公版版画下载目录（体积大，用 _build/fetch_met.mjs 现取）
+assets/
+La_Libert*
+
+# 第三方版权抓图（版权不明，不入库；已从历史清除）
+149934116728555900_a640x364.jpg
+57926bd8-58c0-462d-be04-ac812d74585b.png
+a7a3e16c-e689-4c15-bb44-ea14ea7e853e.png
+f1eaeda0-7ad5-40b0-a3b6-edcbd0636df1.png
+m_1444709437_NCGdzL.jpg
